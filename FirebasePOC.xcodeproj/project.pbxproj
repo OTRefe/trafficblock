@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5AFA0994012D6A66993B0C42 /* libPods-FirebasePOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 679F21D47922F11BD08B6FCC /* libPods-FirebasePOC.a */; };
-		B76FE3181F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B76FE3161F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx */; };
 		B76FE31B1F0CE6D00048EC5B /* trivandrum-kasargod.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B76FE31A1F0CE6D00048EC5B /* trivandrum-kasargod.gpx */; };
 		B774458E1F0B606000829E7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B774458D1F0B606000829E7E /* MapKit.framework */; };
 		B793072B1F0A1E7D006B8FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072A1F0A1E7D006B8FD5 /* main.m */; };
@@ -25,7 +24,6 @@
 		0FF045B4000DA13A555F0F37 /* Pods-FirebasePOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebasePOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebasePOC/Pods-FirebasePOC.release.xcconfig"; sourceTree = "<group>"; };
 		2B6D5AB1E24E4F103E4E1534 /* Pods-FirebasePOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebasePOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebasePOC/Pods-FirebasePOC.debug.xcconfig"; sourceTree = "<group>"; };
 		679F21D47922F11BD08B6FCC /* libPods-FirebasePOC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirebasePOC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B76FE3161F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AreaDUM_location_barcelona.gpx; path = ../../../../Downloads/Task7_MapviewUsingArray/Task_7_MapKitUserLocation/AreaDUM_location_barcelona.gpx; sourceTree = "<group>"; };
 		B76FE31A1F0CE6D00048EC5B /* trivandrum-kasargod.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "trivandrum-kasargod.gpx"; sourceTree = "<group>"; };
 		B774458D1F0B606000829E7E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B79307261F0A1E7D006B8FD5 /* FirebasePOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +83,6 @@
 		B79307281F0A1E7D006B8FD5 /* FirebasePOC */ = {
 			isa = PBXGroup;
 			children = (
-				B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */,
 				B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */,
 				B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */,
 				B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */,
@@ -104,7 +101,7 @@
 			children = (
 				B793073A1F0A1E7D006B8FD5 /* Info.plist */,
 				B76FE31A1F0CE6D00048EC5B /* trivandrum-kasargod.gpx */,
-				B76FE3161F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx */,
+				B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */,
 				B793072A1F0A1E7D006B8FD5 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -183,7 +180,6 @@
 				B79307391F0A1E7D006B8FD5 /* LaunchScreen.storyboard in Resources */,
 				B79307361F0A1E7D006B8FD5 /* Assets.xcassets in Resources */,
 				B76FE31B1F0CE6D00048EC5B /* trivandrum-kasargod.gpx in Resources */,
-				B76FE3181F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx in Resources */,
 				B7CA96F01F0A3B1000360AC3 /* GoogleService-Info.plist in Resources */,
 				B79554521F0E40B200914820 /* AreaDUM_location_barcelona.gpx in Resources */,
 				B79307341F0A1E7D006B8FD5 /* Main.storyboard in Resources */,
