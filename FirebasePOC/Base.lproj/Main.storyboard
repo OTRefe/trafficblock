@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-21-knZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="602"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fwP-Tp-vKu"/>
+                                </connections>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-nU-Qpy">
+                                <rect key="frame" x="10" y="627" width="355" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SRY-YV-YZx"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Slow Moving"/>
+                                    <segment title="Block"/>
+                                    <segment title="Free Moving"/>
+                                    <segment title="Traffic Status"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="mi2-DD-TpG"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" constant="10" id="1kl-v9-cg5"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" constant="5" id="GNt-dk-WXh"/>
+                            <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="GwA-dU-KDf"/>
+                            <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LQm-hs-I0l"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="Oyz-CB-mvB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" constant="10" id="mMc-PA-BEd"/>
+                            <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rkW-Od-qWU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="cPu-21-knZ" id="r5r-k3-RCh"/>
+                        <outlet property="segmentedControl" destination="5Ia-nU-Qpy" id="MjH-Od-NEs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-138" y="125"/>
+        </scene>
+    </scenes>
+</document>
