@@ -17,6 +17,7 @@
 		B79307341F0A1E7D006B8FD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307321F0A1E7D006B8FD5 /* Main.storyboard */; };
 		B79307361F0A1E7D006B8FD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B79307351F0A1E7D006B8FD5 /* Assets.xcassets */; };
 		B79307391F0A1E7D006B8FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */; };
+		B79554521F0E40B200914820 /* AreaDUM_location_barcelona.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */; };
 		B7CA96F01F0A3B1000360AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		B79307351F0A1E7D006B8FD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B79307381F0A1E7D006B8FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B793073A1F0A1E7D006B8FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AreaDUM_location_barcelona.gpx; sourceTree = "<group>"; };
 		B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		B79307281F0A1E7D006B8FD5 /* FirebasePOC */ = {
 			isa = PBXGroup;
 			children = (
+				B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */,
 				B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */,
 				B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */,
 				B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */,
@@ -182,6 +185,7 @@
 				B76FE31B1F0CE6D00048EC5B /* trivandrum-kasargod.gpx in Resources */,
 				B76FE3181F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx in Resources */,
 				B7CA96F01F0A3B1000360AC3 /* GoogleService-Info.plist in Resources */,
+				B79554521F0E40B200914820 /* AreaDUM_location_barcelona.gpx in Resources */,
 				B79307341F0A1E7D006B8FD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
