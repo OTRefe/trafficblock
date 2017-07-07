@@ -150,6 +150,7 @@
 				TargetAttributes = {
 					B79307251F0A1E7D006B8FD5 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SPV52HBALW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -362,9 +363,11 @@
 			baseConfigurationReference = 2B6D5AB1E24E4F103E4E1534 /* Pods-FirebasePOC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SPV52HBALW;
 				INFOPLIST_FILE = FirebasePOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Opentrends.FirebasePOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.opentrends.FirebasePOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -375,9 +378,11 @@
 			baseConfigurationReference = 0FF045B4000DA13A555F0F37 /* Pods-FirebasePOC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SPV52HBALW;
 				INFOPLIST_FILE = FirebasePOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Opentrends.FirebasePOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.opentrends.FirebasePOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

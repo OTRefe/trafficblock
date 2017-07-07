@@ -18,8 +18,12 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (strong, nonatomic) IBOutlet UIButton *homeButton;
+@property (strong, nonatomic) IBOutlet UIButton *yourLocationButton;
 
 - (IBAction)segmentedControlClicked:(id)sender;
+- (IBAction)homeButtonClicked:(UIButton *)sender;
+- (IBAction)yourLocationClicked:(UIButton *)sender;
 
 -(void)locDetails:(NSString *)title :(void (^)(NSDictionary *dict, NSError *error)) completionBlock;
 
