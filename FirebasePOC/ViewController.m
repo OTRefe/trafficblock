@@ -102,7 +102,7 @@
     if(view == nil){
         view = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:cellIdent];
     }
-    view.image = [UIImage imageNamed:@"pin"];
+    view.image = [UIImage imageNamed:@"navigation"];
     view.annotation = annotation;
     return view;
 }
@@ -237,7 +237,7 @@
                                    [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                                        //removing overalys
                                        [_mapView removeOverlays: [_mapView overlays]];
-                                       //int count;
+                                       int count = 0;
                                        for (FIRDataSnapshot *child in snapshot.children) {
                                            double lat = [child.value[@"latitude"] doubleValue];
                                            double lon = [child.value[@"longitude"] doubleValue];
@@ -245,9 +245,10 @@
                                            int distance = [newLocation distanceFromLocation:userLoc];
                                            NSLog(@"DISTANCE %d", distance);
                                            if(distance >0 && distance <10000){
-//                                               if ([child.value[@"endLocation"] isEqual: placemark.thoroughfare]) {
-//                                                   count++;
-//                                                   if(count > 1){
+                                               if ([child.value[@"endLocation"] isEqual: placemark.thoroughfare]) {
+                                                   count++;
+                                               }
+                                                   if(count > 1){
                                                        NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                                                        NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                                                        NSLog(@"%@",strLat);
@@ -261,8 +262,8 @@
                                                        MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                                                        [_mapView addOverlay:circleForUserLoc];
                                                        
-                                               //    }
-                                             //  }
+                                                  }
+                                             // }
                                            }
                                        }
                                    }];
