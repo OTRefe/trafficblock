@@ -17,6 +17,7 @@
 		B79307361F0A1E7D006B8FD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B79307351F0A1E7D006B8FD5 /* Assets.xcassets */; };
 		B79307391F0A1E7D006B8FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */; };
 		B79554521F0E40B200914820 /* AreaDUM_location_barcelona.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */; };
+		B7B9E35E1F13645F0075861B /* AnimatedCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */; };
 		B7CA96F01F0A3B1000360AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 		B79307381F0A1E7D006B8FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B793073A1F0A1E7D006B8FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AreaDUM_location_barcelona.gpx; sourceTree = "<group>"; };
+		B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedCircleView.h; sourceTree = "<group>"; };
+		B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedCircleView.m; sourceTree = "<group>"; };
 		B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +91,8 @@
 				B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */,
 				B793072F1F0A1E7D006B8FD5 /* ViewController.h */,
 				B79307301F0A1E7D006B8FD5 /* ViewController.m */,
+				B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */,
+				B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */,
 				B79307321F0A1E7D006B8FD5 /* Main.storyboard */,
 				B79307351F0A1E7D006B8FD5 /* Assets.xcassets */,
 				B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */,
@@ -245,6 +250,7 @@
 				B79307311F0A1E7D006B8FD5 /* ViewController.m in Sources */,
 				B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */,
 				B793072B1F0A1E7D006B8FD5 /* main.m in Sources */,
+				B7B9E35E1F13645F0075861B /* AnimatedCircleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
