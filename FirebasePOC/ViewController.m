@@ -75,35 +75,6 @@
 }
 
 #pragma  mark - Mapview delegate methods
-/*
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    latitude = [NSNumber numberWithDouble:userLocation.coordinate.latitude];//userlocation latitude
-    longitude = [NSNumber numberWithDouble:userLocation.coordinate.longitude];//userlocation longtitude
-    for (id annotation in _mapView.annotations){
-        [_mapView removeAnnotation:annotation];
-    }
-    MKCoordinateRegion mapRegion;
-    mapRegion.center = userLocation.coordinate;//setting mapview centre as userlocation coordinates
-    mapRegion.span.latitudeDelta = 0.01;
-    mapRegion.span.longitudeDelta = 0.01;
-    [_mapView setRegion:mapRegion animated: YES];//setting mapview region as userlocation region
-    
-    userLoc = [[CLLocation alloc]initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
-    [geoCoder reverseGeocodeLocation:userLoc
-              completionHandler:^(NSArray *placemarks, NSError *error) {
-                 CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                  if(placemark) {
-                      if(placemark.thoroughfare){
-                          //NSLog(@" PLACEMARK :  %@",placemark.thoroughfare);
-                          [arrLocations addObject:placemark.thoroughfare];
-                          //NSLog(@"Location Array %@",arrLocations);
-                      }
-                  }
-              }
-     ];
-}
-*/
-
 
 -(nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     //Adding custom pin for annotation
@@ -116,6 +87,7 @@
     view.annotation = annotation;
     return view;
 }
+
 /*
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
     circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
@@ -155,17 +127,13 @@
         if(lat == tmplat && lon == tmplon){
             if ([type isEqualToString:@"Slow Moving"]){
                 circleView.imageView.image = [UIImage imageNamed:@"orange circle"];
-               // circleView.fillColor = [UIColor colorWithDisplayP3Red:240/255 green:248/255 blue:255/255 alpha:0.4];
             }else if ([type isEqualToString:@"Block"]){
                 circleView.imageView.image = [UIImage imageNamed:@"red circle"];
-               // circleView.fillColor = [UIColor colorWithDisplayP3Red:255/255 green:0/255 blue:0/255 alpha:0.4];
             }else if ([type isEqualToString:@"Free Moving"]){
                 circleView.imageView.image = [UIImage imageNamed:@"green circle"];
-               // circleView.fillColor = [UIColor colorWithDisplayP3Red:224/255 green:255/255 blue:255/255 alpha:0.4];
             }
         }
     }
-
     return circleView ;
 }
 
@@ -185,7 +153,7 @@
     mapRegion.span.latitudeDelta = 0.01;
     mapRegion.span.longitudeDelta = 0.01;
  //   [_mapView setRegion:mapRegion animated: YES];//setting mapview region as userlocation region
-     [_mapView setRegion:MKCoordinateRegionMake(newLoc.coordinate, MKCoordinateSpanMake(0.01, 0.01)) animated:NO];
+    [_mapView setRegion:MKCoordinateRegionMake(newLoc.coordinate, MKCoordinateSpanMake(0.01, 0.01)) animated:NO]; //setting mapview region as userlocation region
     userLoc = [[CLLocation alloc]initWithLatitude:newLoc.coordinate.latitude longitude:newLoc.coordinate.longitude];
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -286,9 +254,9 @@
                                            int distance = [newLocation distanceFromLocation:userLoc];
                                            NSLog(@"DISTANCE %d", distance);
                                            if(distance >0 && distance <10000){
-//                                               if ([child.value[@"endLocation"] isEqual: placemark.thoroughfare]) {
-//                                                   count++;
-//                                                   if(count > 1){
+                                               //if ([child.value[@"endLocation"] isEqual: placemark.thoroughfare]) {
+                                                  // count++;
+                                                  // if(count > 1){
                                                        NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                                                        NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                                                        NSLog(@"%@",strLat);
@@ -302,8 +270,8 @@
                                                        MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                                                        [_mapView addOverlay:circleForUserLoc];
                                                        
-                                               //    }
-                                             //  }
+                                                   //}
+                                               //}
                                            }
                                        }
                                    }];
@@ -331,7 +299,7 @@
     
 }
 
-#pragma mark - Custom Method
+#pragma mark - Custom Methods
 
 -(void)addCircle:(CLLocation *)location{
     //add annotation
