@@ -38,6 +38,7 @@
                                     <segment title="Free Moving"/>
                                     <segment title="Traffic Status"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="segmentedControlClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="mi2-DD-TpG"/>
                                 </connections>
@@ -55,11 +56,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-he-bTC">
                                 <rect key="frame" x="301" y="563" width="44" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Ox1-ey-zxQ"/>
                                     <constraint firstAttribute="height" constant="44" id="jgZ-Vf-B8H"/>
                                 </constraints>
-                                <state key="normal" image="Location"/>
+                                <state key="normal" image="Compass"/>
                                 <connections>
                                     <action selector="yourLocationClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ytv-ES-xfX"/>
                                 </connections>
@@ -95,6 +97,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Location" width="44" height="44"/>
+        <image name="Compass" width="50" height="50"/>
     </resources>
 </document>
