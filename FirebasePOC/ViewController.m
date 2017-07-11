@@ -172,7 +172,7 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
     
-    [_mapView removeOverlays:_mapView.overlays];
+    //[_mapView removeOverlays:_mapView.overlays];
     [self addCircle:newLoc];
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
