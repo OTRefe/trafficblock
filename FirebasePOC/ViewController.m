@@ -67,10 +67,7 @@
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
-    
-    [_homeButton setHidden:YES];
-    [_yourLocationButton setHidden:YES];
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -211,9 +208,17 @@
             }
             [self drawOverlay];
         }];
-
     }
 }
+
+- (IBAction)btnStreetViewClicked:(id)sender {
+    [locManager stopUpdatingLocation];
+}
+
+- (IBAction)btnRefreshClicked:(id)sender {
+    [locManager startUpdatingLocation];
+}
+
 
 
 #pragma mark - Custom Methods
