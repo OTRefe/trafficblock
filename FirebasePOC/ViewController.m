@@ -120,7 +120,6 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
     
-    //[_mapView removeOverlays:_mapView.overlays];
     [self addCircle:newLoc];
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
@@ -216,6 +215,7 @@
 
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
+    [self drawOverlay];
 }
 
 
@@ -257,6 +257,7 @@
     /*  //centering user location in mapview
      MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
      [_mapView setRegion:adjustedRegion animated:YES];*/
+    
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -289,6 +290,7 @@
                                        [dictOverlayDetails setValue:strLat forKey:@"latitude"];
                                        [dictOverlayDetails setValue:strLon forKey:@"longitude"];
                                        [arrOverlayDetails addObject:dictOverlayDetails];
+                                       
                                        // adding circle overlay
                                        MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                                        [_mapView addOverlay:circleForUserLoc];
