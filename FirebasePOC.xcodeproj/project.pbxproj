@@ -89,10 +89,8 @@
 				B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */,
 				B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */,
 				B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */,
-				B793072F1F0A1E7D006B8FD5 /* ViewController.h */,
-				B79307301F0A1E7D006B8FD5 /* ViewController.m */,
-				B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */,
-				B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */,
+				B7B9E3601F138E3E0075861B /* Custom Class */,
+				B7B9E35F1F138E310075861B /* View Controller */,
 				B79307321F0A1E7D006B8FD5 /* Main.storyboard */,
 				B79307351F0A1E7D006B8FD5 /* Assets.xcassets */,
 				B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */,
@@ -110,6 +108,24 @@
 				B793072A1F0A1E7D006B8FD5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7B9E35F1F138E310075861B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B793072F1F0A1E7D006B8FD5 /* ViewController.h */,
+				B79307301F0A1E7D006B8FD5 /* ViewController.m */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		B7B9E3601F138E3E0075861B /* Custom Class */ = {
+			isa = PBXGroup;
+			children = (
+				B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */,
+				B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */,
+			);
+			name = "Custom Class";
 			sourceTree = "<group>";
 		};
 		C33AACD6AD332FA9CDF384FB /* Pods */ = {
