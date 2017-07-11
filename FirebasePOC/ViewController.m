@@ -335,12 +335,12 @@
     MKPointAnnotation *anno = [[MKPointAnnotation alloc] init];
     anno.coordinate = location.coordinate;
     [_mapView addAnnotation:anno];
-    
+
     //add overlay
-    [_mapView addOverlay:[MKCircle circleWithCenterCoordinate:location.coordinate radius:100]];
+    [_mapView addOverlay:[MKCircle circleWithCenterCoordinate:location.coordinate radius:50]];
     
     //zoom into the location with the defined circle at the middle
-    [self zoomInto:location.coordinate distance:(100 * 4.0) animated:YES];
+    [self zoomInto:location.coordinate distance:(50 * 4.0) animated:YES];
 }
 
 -(void)zoomInto:(CLLocationCoordinate2D)zoomLocation distance:(CGFloat)distance animated:(BOOL)animated{
