@@ -11,7 +11,7 @@
 #import "AnimatedCircleView.h"
 @import Firebase;
 
-@interface ViewController : UIViewController<MKMapViewDelegate,CLLocationManagerDelegate>
+@interface TrafficViewController : UIViewController<MKMapViewDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic) FIRDatabaseReference *FIRDbRef;
 

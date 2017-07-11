@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,28 +9,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Traffic View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TrafficViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.90000000000000002" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-21-knZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-21-knZ">
+                                <rect key="frame" x="0.0" y="20" width="414" height="681"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fwP-Tp-vKu"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-nU-Qpy">
-                                <rect key="frame" x="0.0" y="627" width="375" height="41"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-nU-Qpy">
+                                <rect key="frame" x="0.0" y="701" width="414" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="CzB-fK-Goz"/>
+                                    <constraint firstAttribute="height" constant="30" id="kCu-Ih-q1j"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Slow Moving"/>
@@ -43,18 +43,14 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fro-3B-Z53">
-                                <rect key="frame" x="311" y="563" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Rw4-Gq-e2M"/>
-                                    <constraint firstAttribute="width" constant="44" id="VJy-9f-i3O"/>
-                                </constraints>
+                                <rect key="frame" x="350" y="637" width="44" height="44"/>
                                 <state key="normal" image="street road"/>
                                 <connections>
                                     <action selector="btnStreetViewClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mmu-9B-G4Z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaC-eT-OXN">
-                                <rect key="frame" x="311" y="40" width="44" height="44"/>
+                                <rect key="frame" x="350" y="40" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Y6D-L9-HKM"/>
                                     <constraint firstAttribute="width" constant="44" id="ji1-YW-aCE"/>
@@ -64,20 +60,33 @@
                                     <action selector="btnRefreshClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8sX-9q-PmM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdL-zL-Kx2">
+                                <rect key="frame" x="20" y="637" width="44" height="44"/>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <segue destination="Dsw-bV-bBm" kind="modal" id="TlP-iV-MyE"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" id="Pyg-7d-5vQ"/>
-                            <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Qje-yz-F7r"/>
-                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" id="VLO-Uy-AAf"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="height" secondItem="fro-3B-Z53" secondAttribute="height" id="0C7-lP-I05"/>
+                            <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="2eJ-zd-pub"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="height" secondItem="YaC-eT-OXN" secondAttribute="height" id="6F6-qn-hMD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" constant="5" id="E00-ql-l6q"/>
+                            <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KPf-I9-ktO"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="bottom" secondItem="fro-3B-Z53" secondAttribute="bottom" id="Tgv-Ff-bIb"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Uye-pV-HMI"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="width" secondItem="YaC-eT-OXN" secondAttribute="width" id="YZc-9S-QJx"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" id="YvC-lT-hA3"/>
                             <constraint firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" constant="20" id="aaj-AI-nYc"/>
                             <constraint firstItem="YaC-eT-OXN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="fzp-7n-wf4"/>
-                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="fro-3B-Z53" secondAttribute="bottom" constant="20" id="jEu-Sa-jNL"/>
-                            <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" id="lZC-aW-e7W"/>
-                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mNp-s0-iL4"/>
-                            <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="oqO-nE-aGs"/>
-                            <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="t3k-jl-kTJ"/>
-                            <constraint firstAttribute="trailing" secondItem="fro-3B-Z53" secondAttribute="trailing" constant="20" id="yh0-7N-Bc6"/>
+                            <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" id="ha9-bE-aFt"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kJZ-uf-nYV"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" id="oO0-4x-N3Z"/>
+                            <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tVD-BV-Mc5"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="fro-3B-Z53" secondAttribute="bottom" constant="20" id="ur0-cX-hv1"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="width" secondItem="fro-3B-Z53" secondAttribute="width" id="yAF-c4-s6N"/>
                         </constraints>
                     </view>
                     <connections>
@@ -89,10 +98,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138.40000000000001" y="124.58770614692655"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="125.54347826086958"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="U4B-kH-TFb">
+            <objects>
+                <viewController id="Dsw-bV-bBm" customClass="ARViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TnF-Dl-ZXM"/>
+                        <viewControllerLayoutGuide type="bottom" id="mwb-Mo-dTA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZTf-pa-pNr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZF-wn-Qz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624" y="127"/>
         </scene>
     </scenes>
     <resources>
+        <image name="camera" width="50" height="50"/>
         <image name="refresh" width="26" height="26"/>
         <image name="street road" width="50" height="50"/>
     </resources>

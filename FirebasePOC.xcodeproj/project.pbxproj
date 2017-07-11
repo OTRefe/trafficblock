@@ -65,10 +65,11 @@
 		B7737AD31F14E39C005AAFBD /* Icon-86@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A9C1F14E39C005AAFBD /* Icon-86@2x.png */; };
 		B7737AD41F14E39C005AAFBD /* Icon-98@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A9D1F14E39C005AAFBD /* Icon-98@2x.png */; };
 		B7737AD61F14ED73005AAFBD /* FromAngamaliToKoratty.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */; };
+		B7737ADC1F150214005AAFBD /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7737ADB1F150214005AAFBD /* ARViewController.m */; };
 		B774458E1F0B606000829E7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B774458D1F0B606000829E7E /* MapKit.framework */; };
 		B793072B1F0A1E7D006B8FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072A1F0A1E7D006B8FD5 /* main.m */; };
 		B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */; };
-		B79307311F0A1E7D006B8FD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79307301F0A1E7D006B8FD5 /* ViewController.m */; };
+		B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */; };
 		B79307341F0A1E7D006B8FD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307321F0A1E7D006B8FD5 /* Main.storyboard */; };
 		B79307361F0A1E7D006B8FD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B79307351F0A1E7D006B8FD5 /* Assets.xcassets */; };
 		B79307391F0A1E7D006B8FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */; };
@@ -138,13 +139,15 @@
 		B7737A9C1F14E39C005AAFBD /* Icon-86@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-86@2x.png"; sourceTree = "<group>"; };
 		B7737A9D1F14E39C005AAFBD /* Icon-98@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-98@2x.png"; sourceTree = "<group>"; };
 		B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FromAngamaliToKoratty.gpx; sourceTree = "<group>"; };
+		B7737ADA1F150214005AAFBD /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
+		B7737ADB1F150214005AAFBD /* ARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		B774458D1F0B606000829E7E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B79307261F0A1E7D006B8FD5 /* FirebasePOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B793072A1F0A1E7D006B8FD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B793072F1F0A1E7D006B8FD5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B79307301F0A1E7D006B8FD5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B793072F1F0A1E7D006B8FD5 /* TrafficViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrafficViewController.h; sourceTree = "<group>"; };
+		B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrafficViewController.m; sourceTree = "<group>"; };
 		B79307331F0A1E7D006B8FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B79307351F0A1E7D006B8FD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B79307381F0A1E7D006B8FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -385,8 +388,10 @@
 		B7B9E35F1F138E310075861B /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B793072F1F0A1E7D006B8FD5 /* ViewController.h */,
-				B79307301F0A1E7D006B8FD5 /* ViewController.m */,
+				B7737ADA1F150214005AAFBD /* ARViewController.h */,
+				B7737ADB1F150214005AAFBD /* ARViewController.m */,
+				B793072F1F0A1E7D006B8FD5 /* TrafficViewController.h */,
+				B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -590,7 +595,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79307311F0A1E7D006B8FD5 /* ViewController.m in Sources */,
+				B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */,
+				B7737ADC1F150214005AAFBD /* ARViewController.m in Sources */,
 				B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */,
 				B7737ACB1F14E39C005AAFBD /* README.md in Sources */,
 				B793072B1F0A1E7D006B8FD5 /* main.m in Sources */,

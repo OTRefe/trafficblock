@@ -6,9 +6,9 @@
 //  Copyright © 2017 MACMINI 2. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TrafficViewController.h"
 
-@interface ViewController (){
+@interface TrafficViewController (){
     CLLocationManager *locManager;
     CLLocationCoordinate2D coordinate;
     CLLocation *userLoc;
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation ViewController
+@implementation TrafficViewController
 
 #pragma mark - View Cycles
 
