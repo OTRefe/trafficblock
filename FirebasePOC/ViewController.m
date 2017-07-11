@@ -67,13 +67,45 @@
     
     [_homeButton setHidden:YES];
     [_yourLocationButton setHidden:YES];
-}
+    
+    
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
+        [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            //removing overalys
+            [_mapView removeOverlays: [_mapView overlays]];
+            for (FIRDataSnapshot *child in snapshot.children) {
+                //  if([child.value[@"type"] isEqualToString:@"Block"]){
+                
+                double lat = [child.value[@"latitude"] doubleValue];
+                double lon = [child.value[@"longitude"] doubleValue];
+                CLLocation *initialLoc = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+                
+                NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
+                NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
+                NSLog(@"%@",strLat);
+                NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
+                NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
+                [dictOverlayDetails setValue:strType forKey:@"type"];
+                [dictOverlayDetails setValue:strLat forKey:@"latitude"];
+                [dictOverlayDetails setValue:strLon forKey:@"longitude"];
+                [arrOverlayDetails addObject:dictOverlayDetails];
+
+                MKCircle *circleForInitialLoc = [MKCircle circleWithCenterCoordinate:initialLoc.coordinate radius:50];
+                [_mapView addOverlay:circleForInitialLoc];
+                // }
+            }
+        }];
+    }];
+}
 #pragma  mark - Mapview delegate methods
 
 -(nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -114,7 +146,6 @@
 */
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     AnimatedCircleView* circleView = [[AnimatedCircleView alloc] initWithCircle:(MKCircle *)overlay];
-    
     circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
     circleRenderer.strokeColor = [UIColor blackColor];
     circleRenderer.lineWidth = 1;
@@ -140,7 +171,7 @@
 #pragma  mark - Mapview delegate methods
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
-
+    
     [_mapView removeOverlays:_mapView.overlays];
     [self addCircle:newLoc];
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
@@ -152,7 +183,7 @@
     mapRegion.center = newLoc.coordinate;//setting mapview centre as userlocation coordinates
     mapRegion.span.latitudeDelta = 0.01;
     mapRegion.span.longitudeDelta = 0.01;
- //   [_mapView setRegion:mapRegion animated: YES];//setting mapview region as userlocation region
+    //[_mapView setRegion:mapRegion animated: YES];//setting mapview region as userlocation region
     [_mapView setRegion:MKCoordinateRegionMake(newLoc.coordinate, MKCoordinateSpanMake(0.01, 0.01)) animated:NO]; //setting mapview region as userlocation region
     userLoc = [[CLLocation alloc]initWithLatitude:newLoc.coordinate.latitude longitude:newLoc.coordinate.longitude];
     [geoCoder reverseGeocodeLocation:userLoc
@@ -165,8 +196,7 @@
                                NSLog(@"Location Array %@",arrLocations);
                            }
                        }
-                   }
-     ];
+                   }];
 }
 
 #pragma mark - IB Action
@@ -177,12 +207,12 @@
     
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
+        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
             dictLocDetails = dict;
             NSArray *keys = [dictLocDetails allKeys];
             NSLog(@"Keys : %@", keys);
             isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
+            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
                 if([object isEqual:NULL]){
                     stop = false;
                     isKeyNull = true;
@@ -276,8 +306,7 @@
                                        }
                                    }];
                                }];
-                           }
-             ];
+                           }];
         });
     }
 }
@@ -290,7 +319,7 @@
     [_mapView removeOverlays: [_mapView overlays]];
 }
 
-- (IBAction)yourLocationClicked:(UIButton *)sender {
+- (IBAction)yourLocationClicked:(UIButton *)sender{
     MKCoordinateRegion mapRegion;
     mapRegion.center = _mapView.userLocation.coordinate;//setting mapview centre as userlocation coordinates
     mapRegion.span.latitudeDelta = 0.01;
@@ -315,7 +344,6 @@
 }
 
 -(void)zoomInto:(CLLocationCoordinate2D)zoomLocation distance:(CGFloat)distance animated:(BOOL)animated{
-    
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, distance, distance);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:animated];
