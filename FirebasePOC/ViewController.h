@@ -11,7 +11,7 @@
 #import "AnimatedCircleView.h"
 @import Firebase;
 
-@interface ViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface ViewController : UIViewController<MKMapViewDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic) FIRDatabaseReference *FIRDbRef;
 
@@ -23,9 +23,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *yourLocationButton;
 
 - (IBAction)segmentedControlClicked:(id)sender;
-- (IBAction)homeButtonClicked:(UIButton *)sender;
-- (IBAction)yourLocationClicked:(UIButton *)sender;
 
+-(void)drawOverlay;
 -(void)locDetails:(NSString *)title :(void (^)(NSDictionary *dict, NSError *error)) completionBlock;
 -(void)zoomInto:(CLLocationCoordinate2D)zoomLocation distance:(CGFloat)distance animated:(BOOL)animated;
 -(void)addCircle:(CLLocation *)location;

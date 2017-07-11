@@ -34,61 +34,29 @@
                                 </constraints>
                                 <segments>
                                     <segment title="Slow Moving"/>
-                                    <segment title="Block"/>
                                     <segment title="Free Moving"/>
-                                    <segment title="Traffic Status"/>
+                                    <segment title="Block"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="segmentedControlClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="mi2-DD-TpG"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlK-QJ-8Eq">
-                                <rect key="frame" x="10" y="627" width="355" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="Home">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="homeButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E3r-Eg-J7Z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-he-bTC">
-                                <rect key="frame" x="301" y="563" width="44" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="Ox1-ey-zxQ"/>
-                                    <constraint firstAttribute="height" constant="44" id="jgZ-Vf-B8H"/>
-                                </constraints>
-                                <state key="normal" image="Compass"/>
-                                <connections>
-                                    <action selector="yourLocationClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ytv-ES-xfX"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" constant="10" id="1kl-v9-cg5"/>
-                            <constraint firstItem="UlK-QJ-8Eq" firstAttribute="leading" secondItem="5Ia-nU-Qpy" secondAttribute="leading" id="3GK-yt-Z8F"/>
-                            <constraint firstItem="UlK-QJ-8Eq" firstAttribute="top" secondItem="jbw-he-bTC" secondAttribute="bottom" constant="20" id="Ar3-Nf-k1q"/>
                             <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" constant="5" id="GNt-dk-WXh"/>
                             <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="GwA-dU-KDf"/>
                             <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LQm-hs-I0l"/>
                             <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="Oyz-CB-mvB"/>
-                            <constraint firstAttribute="trailing" secondItem="jbw-he-bTC" secondAttribute="trailing" constant="30" id="RXq-6i-tGO"/>
-                            <constraint firstItem="UlK-QJ-8Eq" firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" id="XP0-aX-8I1"/>
-                            <constraint firstItem="UlK-QJ-8Eq" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="top" id="jQd-Rg-Mlr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" constant="10" id="mMc-PA-BEd"/>
-                            <constraint firstItem="UlK-QJ-8Eq" firstAttribute="bottom" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" id="ofS-T6-08l"/>
                             <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rkW-Od-qWU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="homeButton" destination="UlK-QJ-8Eq" id="cpg-80-Saj"/>
                         <outlet property="mapView" destination="cPu-21-knZ" id="r5r-k3-RCh"/>
                         <outlet property="segmentedControl" destination="5Ia-nU-Qpy" id="MjH-Od-NEs"/>
-                        <outlet property="yourLocationButton" destination="jbw-he-bTC" id="lpr-VK-5XT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,7 +64,4 @@
             <point key="canvasLocation" x="-138.40000000000001" y="124.58770614692655"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Compass" width="50" height="50"/>
-    </resources>
 </document>
