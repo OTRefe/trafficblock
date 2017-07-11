@@ -257,7 +257,6 @@
     /*  //centering user location in mapview
      MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
      [_mapView setRegion:adjustedRegion animated:YES];*/
-    
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -266,6 +265,7 @@
                                NSLog(@" PLACEMARK :  %@",placemark.thoroughfare);
                            }
                        }
+                   }];
                        [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                            NSDictionary *dictData = snapshot.value;
                            NSLog(@"Retrieved Dictionary Data : %@",dictData);
@@ -299,7 +299,6 @@
                                
                            }];
                        }];
-                   }];
-
+                   //}];
 }
 @end
