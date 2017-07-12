@@ -20,4 +20,6 @@
 
 @property (nonatomic,strong) NSMutableArray *arrPoints;
 
+- (IBAction)btnCloseClicked:(id)sender;
+
 @end

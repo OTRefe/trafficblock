@@ -28,7 +28,7 @@ typedef enum {
     kFloorLookingType
 } ARKitLookingType;
 
-@interface ARKitEngine : NSObject <LocalizationDelegate, UIAccelerometerDelegate> {
+@interface ARKitEngine : NSObject <LocalizationDelegate, UIAccelerometerDelegate,UIAlertViewDelegate> {
     
 @private
     NSMutableArray *ar_coordinates;

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "LocalizationDelegate.h"
+#import <UIKit/UIKit.h>
+
 
 typedef enum {
     kLocalizationUnknown,

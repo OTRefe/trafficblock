@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "AnimatedCircleView.h"
+#import "ARViewController.h"
 @import Firebase;
 
 @interface TrafficViewController : UIViewController<MKMapViewDelegate,CLLocationManagerDelegate>

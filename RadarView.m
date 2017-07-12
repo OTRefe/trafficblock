@@ -16,7 +16,7 @@
 - (id)initAtPoint:(CGPoint)middlePoint {
     if ((self = [super initWithFrame:CGRectZero])) {
         // Initialization code
-		UIImage *radarImg = [UIImage imageNamed:@"radar.png"];
+		UIImage *radarImg = [UIImage imageNamed:@"radar"];
 		UIImageView *background = [[UIImageView alloc] initWithImage: radarImg];
 		[self addSubview:background];
 
@@ -34,7 +34,7 @@
 		centerAzimuth = 2 * M_PI + centerAzimuth;
 	}
 	
-	UIImage *dot = [UIImage imageNamed:@"radar_dot.png"];
+	UIImage *dot = [UIImage imageNamed:@"radar_dot"];
 	
 	for (UIView *sub in dotsView.subviews) {
 		[sub removeFromSuperview];

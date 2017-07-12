@@ -31,7 +31,7 @@ static LocalizationHelper *sharedHelper;
         locationManager.headingFilter = kCLHeadingFilterNone;
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		locationManager.distanceFilter = kCLDistanceFilterNone;
-	[locationManager requestAlwaysAuthorization];
+        [locationManager requestAlwaysAuthorization];
         
         isHeadingInfoAvailable = [CLLocationManager headingAvailable];
         
@@ -93,7 +93,7 @@ static LocalizationHelper *sharedHelper;
 		//Probably a cached result. Restart
 		[manager stopUpdatingLocation];
 		[manager startUpdatingLocation];
-		return; 	
+		return;
 	}
     
 	for (id<LocalizationDelegate> delegate in registered) {
@@ -125,14 +125,10 @@ static LocalizationHelper *sharedHelper;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {	
 	[manager stopUpdatingLocation];
 	[loadingView removeFromSuperview];
+    
 	localizationStatus = kLocalizationDisabled;
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" 
-													message:NSLocalizedString(@"GPS_Unavailable", @"") 
-												   delegate:nil 
-										  cancelButtonTitle:NSLocalizedString(@"Ok", @"") 
-										  otherButtonTitles:nil];
-	[alert show];
-	[locDelegate locationUnavailable];
+    [locDelegate locationUnavailable];
+    
 }
 
 @end
