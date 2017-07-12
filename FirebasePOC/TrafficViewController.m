@@ -25,6 +25,8 @@
     NSMutableArray *arrLocations;
     MKCircleRenderer *circleRenderer;
     CLGeocoder *geoCoder;
+    UIActivityIndicatorView *activityIndicator;
+    UIView *indicatorView;
     BOOL isKeyNull;
     __block NSDictionary *dictReturn;
 }
@@ -64,7 +66,6 @@
 
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
-   // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -219,8 +220,10 @@
      MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
      [_mapView setRegion:adjustedRegion animated:YES];*/
     
-//    //removing overalys
-//    [_mapView removeOverlays: [_mapView overlays]];
+    [self showActivityIndicator];
+    
+    //removing overalys
+    [_mapView removeOverlays: [_mapView overlays]];
     
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -263,7 +266,7 @@
                     [_mapView addOverlay:circleForUserLoc];
                 }
             }
-            
+            [self hideActivityIndicator];
         }];
     }];
     
@@ -272,6 +275,7 @@
 -(void)addDataToFirebase:(NSString *)title{
     [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         NSLog(@"FIRDatabase Reference :%@", ref);
+        [self hideActivityIndicator];
     }];
 }
 
@@ -290,6 +294,7 @@
                 }
             }];
             if(!isKeyNull){
+                [self showActivityIndicator];
                 [self addDataToFirebase:segmentTitle];
             }
             [self drawOverlay];
@@ -301,5 +306,21 @@
     [alert addAction:okButton];
     [alert addAction:cancelButton];
     [self presentViewController:alert animated:YES completion:Nil];
+}
+
+-(void)showActivityIndicator{
+    indicatorView = [[UIView alloc]initWithFrame:self.view.bounds];
+    indicatorView.backgroundColor = [UIColor colorWithRed:0/255 green:0/255 blue:0/255 alpha:0.6];
+    [self.view addSubview:indicatorView];
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activityIndicator setBackgroundColor:[UIColor clearColor]];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = self.view.center;
+    [activityIndicator startAnimating];
+    [indicatorView addSubview:activityIndicator];
+}
+
+-(void)hideActivityIndicator{
+    [indicatorView removeFromSuperview];
 }
 @end
