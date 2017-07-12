@@ -6,9 +6,9 @@
 //  Copyright © 2017 MACMINI 2. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TrafficViewController.h"
 
-@interface ViewController (){
+@interface TrafficViewController (){
     CLLocationManager *locManager;
     CLLocationCoordinate2D coordinate;
     CLLocation *userLoc;
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation ViewController
+@implementation TrafficViewController
 
 #pragma mark - View Cycles
 
@@ -122,7 +122,6 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
     
-    //[_mapView removeOverlays:_mapView.overlays];
     [self addCircle:newLoc];
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
@@ -217,6 +216,7 @@
 
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
+    [self drawOverlay];
 }
 
 
@@ -267,6 +267,7 @@
                                NSLog(@" PLACEMARK :  %@",placemark.thoroughfare);
                            }
                        }
+                   }];
                        [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                            NSDictionary *dictData = snapshot.value;
                            NSLog(@"Retrieved Dictionary Data : %@",dictData);
@@ -291,6 +292,7 @@
                                        [dictOverlayDetails setValue:strLat forKey:@"latitude"];
                                        [dictOverlayDetails setValue:strLon forKey:@"longitude"];
                                        [arrOverlayDetails addObject:dictOverlayDetails];
+                                       
                                        // adding circle overlay
                                        MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                                        [_mapView addOverlay:circleForUserLoc];
@@ -299,7 +301,6 @@
                                
                            }];
                        }];
-                   }];
-
+                   //}];
 }
 @end
