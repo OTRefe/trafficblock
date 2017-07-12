@@ -65,7 +65,6 @@
 		B7737AD31F14E39C005AAFBD /* Icon-86@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A9C1F14E39C005AAFBD /* Icon-86@2x.png */; };
 		B7737AD41F14E39C005AAFBD /* Icon-98@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A9D1F14E39C005AAFBD /* Icon-98@2x.png */; };
 		B7737AD61F14ED73005AAFBD /* FromAngamaliToKoratty.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */; };
-		B7737ADC1F150214005AAFBD /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7737ADB1F150214005AAFBD /* ARViewController.m */; };
 		B774458E1F0B606000829E7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B774458D1F0B606000829E7E /* MapKit.framework */; };
 		B782CEFF1F15DDAA00CD5E4C /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEFD1F15DDAA00CD5E4C /* DetailView.m */; };
 		B782CF001F15DDAA00CD5E4C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */; };
@@ -75,6 +74,7 @@
 		B782CF131F15E46C00CD5E4C /* ARObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF091F15E46C00CD5E4C /* ARObjectView.m */; };
 		B782CF141F15E46C00CD5E4C /* LocalizationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF0D1F15E46C00CD5E4C /* LocalizationHelper.m */; };
 		B782CF151F15E46C00CD5E4C /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF0F1F15E46C00CD5E4C /* RadarView.m */; };
+		B782CF171F1612B500CD5E4C /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF161F1612B500CD5E4C /* ARViewController.m */; };
 		B793072B1F0A1E7D006B8FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072A1F0A1E7D006B8FD5 /* main.m */; };
 		B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */; };
 		B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */; };
@@ -148,7 +148,6 @@
 		B7737A9D1F14E39C005AAFBD /* Icon-98@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-98@2x.png"; sourceTree = "<group>"; };
 		B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FromAngamaliToKoratty.gpx; sourceTree = "<group>"; };
 		B7737ADA1F150214005AAFBD /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
-		B7737ADB1F150214005AAFBD /* ARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		B774458D1F0B606000829E7E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B782CEFC1F15DDAA00CD5E4C /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailView.h; path = ../DetailView.h; sourceTree = "<group>"; };
 		B782CEFD1F15DDAA00CD5E4C /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailView.m; path = ../DetailView.m; sourceTree = "<group>"; };
@@ -168,6 +167,7 @@
 		B782CF0D1F15E46C00CD5E4C /* LocalizationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationHelper.m; sourceTree = "<group>"; };
 		B782CF0E1F15E46C00CD5E4C /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
 		B782CF0F1F15E46C00CD5E4C /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
+		B782CF161F1612B500CD5E4C /* ARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		B79307261F0A1E7D006B8FD5 /* FirebasePOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B793072A1F0A1E7D006B8FD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -438,7 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				B7737ADA1F150214005AAFBD /* ARViewController.h */,
-				B7737ADB1F150214005AAFBD /* ARViewController.m */,
+				B782CF161F1612B500CD5E4C /* ARViewController.m */,
 				B793072F1F0A1E7D006B8FD5 /* TrafficViewController.h */,
 				B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */,
 			);
@@ -649,8 +649,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */,
-				B7737ADC1F150214005AAFBD /* ARViewController.m in Sources */,
 				B782CF101F15E46C00CD5E4C /* ARGeoCoordinate.m in Sources */,
+				B782CF171F1612B500CD5E4C /* ARViewController.m in Sources */,
 				B782CF131F15E46C00CD5E4C /* ARObjectView.m in Sources */,
 				B782CF141F15E46C00CD5E4C /* LocalizationHelper.m in Sources */,
 				B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */,

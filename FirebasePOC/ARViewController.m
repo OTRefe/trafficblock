@@ -26,17 +26,25 @@
     for(NSDictionary *dict in arrPoints){
         CLLocation *location = [[CLLocation alloc] initWithLatitude:[[dict valueForKey:@"latitude"] floatValue] longitude:[[dict valueForKey:@"longitude"] floatValue]];
         ARGeoCoordinate *geoCoordinate = [ARGeoCoordinate coordinateWithLocation:location];
-        geoCoordinate.dataObject = [NSString stringWithFormat:@"%@",[dict valueForKey:@"type"]];
+        geoCoordinate.dataObject =dict; // [NSString stringWithFormat:@"%@",[dict valueForKey:@"type"]];
         [arrGeoPoints addObject:geoCoordinate];
     }
     
-   // [self showAR];
+    [self showAR];
 }
 
 #pragma mark - ARViewDelegate protocol Methods
 
 -(ARObjectView *)viewForCoordinate:(ARGeoCoordinate *)coordinate floorLooking:(BOOL)floorLooking{
-    NSString *text = (NSString *)coordinate.dataObject;
+    //NSString *text = (NSString *)coordinate.dataObject;
+    //NSLog(@"text: %@",text);
+    
+    NSDictionary *dict = (NSDictionary *)coordinate.dataObject;
+    NSString *text =[dict valueForKey:@"type"];
+    
+    float distanceInKM=([[dict valueForKey:@"distance"]floatValue]/1000);
+    
+    NSString *distance =[NSString stringWithFormat:@"%.02f KM", distanceInKM];
     
     ARObjectView *view = nil;
     
@@ -47,16 +55,28 @@
         [view addSubview:arrowView];
         view.displayed = NO;
     }else{
-        UIImageView *boxView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"box"]];
+        
+        NSString *imageName=@"";
+        
+        if ([text isEqualToString:@"Block"]) {
+            imageName = @"red box";
+        }else if ([text isEqualToString:@"Slow Moving"]){
+            imageName = @"blue box";
+        }else{
+            imageName = @"green box"; //"Free Moving"
+        }
+        
+        UIImageView *boxView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
         boxView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(4, 16, boxView.frame.size.width - 8, 20)];
-        lbl.font = [UIFont systemFontOfSize:17];
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(4, 25, boxView.frame.size.width - 8, 20)];
+        lbl.font = [UIFont boldSystemFontOfSize:10];
         lbl.minimumFontSize = 2;
         lbl.backgroundColor = [UIColor clearColor];
         lbl.textColor = [UIColor whiteColor];
         lbl.textAlignment = NSTextAlignmentCenter;
-        lbl.text = text;
+        lbl.text = distance;
         lbl.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        
         view = [[ARObjectView alloc] initWithFrame:boxView.frame];
         [view addSubview:boxView];
         [view addSubview:lbl];
@@ -67,11 +87,16 @@
 }
 
 -(void)itemTouchedWithIndex:(NSInteger)index{
-    /*  selectedIndex = index;
-     NSString *name = (NSString *)[engine dataObjectWithIndex:index];
-     currentDetailView = [[NSBundle mainBundle] loadNibNamed:@"DetailView" owner:nil options:nil][0];
-     currentDetailView.nameLbl.text = name;
-     [engine addExtraView:currentDetailView];*/
+    selectedIndex = index;
+    NSDictionary *dict =[engine dataObjectWithIndex:index];
+    
+    float distanceInKM=([[dict valueForKey:@"distance"]floatValue]/1000);
+    NSString *distance =[NSString stringWithFormat:@"%.02f KM", distanceInKM];
+    
+    NSString *name = [NSString stringWithFormat:@"Distance: %@\nType: %@\nRoad: %@",distance,[dict valueForKey:@"type"],[dict valueForKey:@"placemark"]];
+    currentDetailView = [[NSBundle mainBundle] loadNibNamed:@"DetailView" owner:nil options:nil][0];
+    currentDetailView.nameLbl.text = name;
+    [engine addExtraView:currentDetailView];
 }
 
 -(void)didChangeLooking:(BOOL)floorLooking{
