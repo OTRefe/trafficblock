@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="mapstogpx.com" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+  <metadata>
+    <link href="http://www.mapstogpx.com">
+      <text>Sverrir Sigmundarson</text>
+    </link>
+    <!--desc>Map data copyright 2017 Google</desc-->
+    <!--copyright author="Google Inc">
+    	<year>2017</year>
+    	<license>https://developers.google.com/maps/terms</license>
+    </copyright-->
+    <!--url>https://www.google.co.in/maps/dir/Koratty+Infopark,+Koratty,+Kerala/KSRTC+Bus+Depot,+Angamaly,+Kerala/@10.2431961,76.2841223,12z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3b0803db044345d1:0xa5e91a032864ed55!2m2!1d76.3543222!2d10.2682105!1m5!1m1!1s0x3b0806601b2677a7:0xf2dd7531a5fc03b6!2m2!1d76.386103!2d10.19582?shorturl=1&dg=dbrw&newdg=1&hl=en</url-->
+    <time>2017-07-11T15:30:43Z</time>
+  </metadata>
+  <wpt lat="10.2679251" lon="76.3542478">
+    <name>WP001</name>
+  </wpt>
+  <wpt lat="10.268084063541" lon="76.354128071948">
+    <name>WP002</name>
+  </wpt>
+  <wpt lat="10.268243027082" lon="76.354008343896">
+    <name>WP003</name>
+  </wpt>
+  <wpt lat="10.268401990622" lon="76.353888615845">
+    <name>WP004</name>
+  </wpt>
+  <wpt lat="10.268560954163" lon="76.353768887793">
+    <name>WP005</name>
+  </wpt>
+  <wpt lat="10.268719917704" lon="76.353649159741">
+    <name>WP006</name>
+  </wpt>
+  <wpt lat="10.268878881245" lon="76.353529431689">
+    <name>WP007</name>
+  </wpt>
+  <wpt lat="10.269037844786" lon="76.353409703638">
+    <name>WP008</name>
+  </wpt>
+  <wpt lat="10.269196808326" lon="76.353289975586">
+    <name>WP009</name>
+  </wpt>
+  <wpt lat="10.269254" lon="76.3532469">
+    <name>WP010</name>
+  </wpt>
+  <wpt lat="10.26919787175" lon="76.353054079297">
+    <name>WP011</name>
+  </wpt>
+  <wpt lat="10.269141743499" lon="76.352861258595">
+    <name>WP012</name>
+  </wpt>
+  <wpt lat="10.269085615249" lon="76.352668437892">
+    <name>WP013</name>
+  </wpt>
+  <wpt lat="10.269029486998" lon="76.352475617189">
+    <name>WP014</name>
+  </wpt>
+  <wpt lat="10.268973358748" lon="76.352282796487">
+    <name>WP015</name>
+  </wpt>
+  <wpt lat="10.268917230497" lon="76.352089975784">
+    <name>WP016</name>
+  </wpt>
+  <wpt lat="10.268861102247" lon="76.351897155081">
+    <name>WP017</name>
+  </wpt>
+  <wpt lat="10.268804973997" lon="76.351704334378">
+    <name>WP018</name>
+  </wpt>
+  <wpt lat="10.268748845746" lon="76.351511513676">
+    <name>WP019</name>
+  </wpt>
+  <wpt lat="10.268692717496" lon="76.351318692973">
+    <name>WP020</name>
+  </wpt>
+  <wpt lat="10.268636589245" lon="76.35112587227">
+    <name>WP021</name>
+  </wpt>
+  <wpt lat="10.268580460995" lon="76.350933051568">
+    <name>WP022</name>
+  </wpt>
+  <wpt lat="10.268524332744" lon="76.350740230865">
+    <name>WP023</name>
+  </wpt>
+  <wpt lat="10.268468204494" lon="76.350547410162">
+    <name>WP024</name>
+  </wpt>
+  <wpt lat="10.268412076244" lon="76.35035458946">
+    <name>WP025</name>
+  </wpt>
+  <wpt lat="10.268355947993" lon="76.350161768757">
+    <name>WP026</name>
+  </wpt>
+  <wpt lat="10.268299819743" lon="76.349968948054">
+    <name>WP027</name>
+  </wpt>
+  <wpt lat="10.268243691492" lon="76.349776127352">
+    <name>WP028</name>
+  </wpt>
+  <wpt lat="10.2682059" lon="76.3496463">
+    <name>WP029</name>
+  </wpt>
+</gpx>
