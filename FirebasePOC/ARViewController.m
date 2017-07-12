@@ -115,10 +115,15 @@
     }
 }
 
+#pragma mark - IB Action
+
+- (IBAction)btnCloseClicked:(id)sender {
+    [self closeAr];
+}
+
 #pragma mark - Custom Methods
 
 -(void)showAR{
-    
     ARKitConfig *config = [ARKitConfig defaultConfigFor:self];
     config.orientation = self.interfaceOrientation;
     
@@ -146,7 +151,5 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (IBAction)btnCloseClicked:(id)sender {
-    [self closeAr];
-}
+
 @end

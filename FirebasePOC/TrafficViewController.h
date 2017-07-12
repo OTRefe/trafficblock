@@ -30,8 +30,10 @@
 
 -(void)drawOverlay;
 -(void)locDetails:(NSString *)title :(void (^)(NSDictionary *dict, NSError *error)) completionBlock;
+-(void)addDataToFirebase:(NSString *)title;
 -(void)zoomInto:(CLLocationCoordinate2D)zoomLocation distance:(CGFloat)distance animated:(BOOL)animated;
 -(void)addCircle:(CLLocation *)location;
+-(void)showAlert:(NSString *)segmentTitle;
 
 @end
 
