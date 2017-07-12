@@ -67,6 +67,14 @@
 		B7737AD61F14ED73005AAFBD /* FromAngamaliToKoratty.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */; };
 		B7737ADC1F150214005AAFBD /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7737ADB1F150214005AAFBD /* ARViewController.m */; };
 		B774458E1F0B606000829E7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B774458D1F0B606000829E7E /* MapKit.framework */; };
+		B782CEF61F15DC6E00CD5E4C /* ARGeoCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEE81F15DC6E00CD5E4C /* ARGeoCoordinate.m */; };
+		B782CEF71F15DC6E00CD5E4C /* ARKitConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEEB1F15DC6E00CD5E4C /* ARKitConfig.m */; };
+		B782CEF81F15DC6E00CD5E4C /* ARKitEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEED1F15DC6E00CD5E4C /* ARKitEngine.m */; };
+		B782CEF91F15DC6E00CD5E4C /* ARObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEEF1F15DC6E00CD5E4C /* ARObjectView.m */; };
+		B782CEFA1F15DC6E00CD5E4C /* LocalizationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEF31F15DC6E00CD5E4C /* LocalizationHelper.m */; };
+		B782CEFB1F15DC6E00CD5E4C /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEF51F15DC6E00CD5E4C /* RadarView.m */; };
+		B782CEFF1F15DDAA00CD5E4C /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEFD1F15DDAA00CD5E4C /* DetailView.m */; };
+		B782CF001F15DDAA00CD5E4C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */; };
 		B793072B1F0A1E7D006B8FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072A1F0A1E7D006B8FD5 /* main.m */; };
 		B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */; };
 		B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */; };
@@ -142,6 +150,24 @@
 		B7737ADA1F150214005AAFBD /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
 		B7737ADB1F150214005AAFBD /* ARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		B774458D1F0B606000829E7E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B782CEE71F15DC6E00CD5E4C /* ARGeoCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGeoCoordinate.h; sourceTree = "<group>"; };
+		B782CEE81F15DC6E00CD5E4C /* ARGeoCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGeoCoordinate.m; sourceTree = "<group>"; };
+		B782CEE91F15DC6E00CD5E4C /* ARKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKit.h; sourceTree = "<group>"; };
+		B782CEEA1F15DC6E00CD5E4C /* ARKitConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKitConfig.h; sourceTree = "<group>"; };
+		B782CEEB1F15DC6E00CD5E4C /* ARKitConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKitConfig.m; sourceTree = "<group>"; };
+		B782CEEC1F15DC6E00CD5E4C /* ARKitEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKitEngine.h; sourceTree = "<group>"; };
+		B782CEED1F15DC6E00CD5E4C /* ARKitEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKitEngine.m; sourceTree = "<group>"; };
+		B782CEEE1F15DC6E00CD5E4C /* ARObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARObjectView.h; sourceTree = "<group>"; };
+		B782CEEF1F15DC6E00CD5E4C /* ARObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARObjectView.m; sourceTree = "<group>"; };
+		B782CEF01F15DC6E00CD5E4C /* ARViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewDelegate.h; sourceTree = "<group>"; };
+		B782CEF11F15DC6E00CD5E4C /* LocalizationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationDelegate.h; sourceTree = "<group>"; };
+		B782CEF21F15DC6E00CD5E4C /* LocalizationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationHelper.h; sourceTree = "<group>"; };
+		B782CEF31F15DC6E00CD5E4C /* LocalizationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationHelper.m; sourceTree = "<group>"; };
+		B782CEF41F15DC6E00CD5E4C /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
+		B782CEF51F15DC6E00CD5E4C /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
+		B782CEFC1F15DDAA00CD5E4C /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailView.h; path = ../DetailView.h; sourceTree = "<group>"; };
+		B782CEFD1F15DDAA00CD5E4C /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailView.m; path = ../DetailView.m; sourceTree = "<group>"; };
+		B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailView.xib; path = ../DetailView.xib; sourceTree = "<group>"; };
 		B79307261F0A1E7D006B8FD5 /* FirebasePOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B793072A1F0A1E7D006B8FD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -338,9 +364,32 @@
 			path = AppIcon.appiconset;
 			sourceTree = "<group>";
 		};
+		B782CEE61F15DC4300CD5E4C /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				B782CEE71F15DC6E00CD5E4C /* ARGeoCoordinate.h */,
+				B782CEE81F15DC6E00CD5E4C /* ARGeoCoordinate.m */,
+				B782CEE91F15DC6E00CD5E4C /* ARKit.h */,
+				B782CEEA1F15DC6E00CD5E4C /* ARKitConfig.h */,
+				B782CEEB1F15DC6E00CD5E4C /* ARKitConfig.m */,
+				B782CEEC1F15DC6E00CD5E4C /* ARKitEngine.h */,
+				B782CEED1F15DC6E00CD5E4C /* ARKitEngine.m */,
+				B782CEEE1F15DC6E00CD5E4C /* ARObjectView.h */,
+				B782CEEF1F15DC6E00CD5E4C /* ARObjectView.m */,
+				B782CEF01F15DC6E00CD5E4C /* ARViewDelegate.h */,
+				B782CEF11F15DC6E00CD5E4C /* LocalizationDelegate.h */,
+				B782CEF21F15DC6E00CD5E4C /* LocalizationHelper.h */,
+				B782CEF31F15DC6E00CD5E4C /* LocalizationHelper.m */,
+				B782CEF41F15DC6E00CD5E4C /* RadarView.h */,
+				B782CEF51F15DC6E00CD5E4C /* RadarView.m */,
+			);
+			name = ARKit;
+			sourceTree = "<group>";
+		};
 		B793071D1F0A1E7C006B8FD5 = {
 			isa = PBXGroup;
 			children = (
+				B782CEE61F15DC4300CD5E4C /* ARKit */,
 				B79307281F0A1E7D006B8FD5 /* FirebasePOC */,
 				B79307271F0A1E7D006B8FD5 /* Products */,
 				C33AACD6AD332FA9CDF384FB /* Pods */,
@@ -401,6 +450,9 @@
 			children = (
 				B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */,
 				B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */,
+				B782CEFC1F15DDAA00CD5E4C /* DetailView.h */,
+				B782CEFD1F15DDAA00CD5E4C /* DetailView.m */,
+				B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */,
 			);
 			name = "Custom Class";
 			sourceTree = "<group>";
@@ -523,6 +575,7 @@
 				B7737AA21F14E39C005AAFBD /* ic_launcher.png in Resources */,
 				B7737ABA1F14E39C005AAFBD /* Icon-App-40x40@3x.png in Resources */,
 				B7737ABD1F14E39C005AAFBD /* Icon-App-60x60@1x.png in Resources */,
+				B782CF001F15DDAA00CD5E4C /* DetailView.xib in Resources */,
 				B7737AB31F14E39C005AAFBD /* Icon-App-20x20@2x.png in Resources */,
 				B7737AB91F14E39C005AAFBD /* Icon-App-40x40@2x.png in Resources */,
 				B7737AA91F14E39C005AAFBD /* icon-messages-app-iPadAir-74x55@2x.png in Resources */,
@@ -596,10 +649,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */,
+				B782CEF71F15DC6E00CD5E4C /* ARKitConfig.m in Sources */,
+				B782CEF91F15DC6E00CD5E4C /* ARObjectView.m in Sources */,
+				B782CEFB1F15DC6E00CD5E4C /* RadarView.m in Sources */,
+				B782CEFA1F15DC6E00CD5E4C /* LocalizationHelper.m in Sources */,
 				B7737ADC1F150214005AAFBD /* ARViewController.m in Sources */,
 				B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */,
 				B7737ACB1F14E39C005AAFBD /* README.md in Sources */,
 				B793072B1F0A1E7D006B8FD5 /* main.m in Sources */,
+				B782CEF61F15DC6E00CD5E4C /* ARGeoCoordinate.m in Sources */,
+				B782CEF81F15DC6E00CD5E4C /* ARKitEngine.m in Sources */,
+				B782CEFF1F15DDAA00CD5E4C /* DetailView.m in Sources */,
 				B7B9E35E1F13645F0075861B /* AnimatedCircleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
