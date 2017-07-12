@@ -42,13 +42,6 @@
                                     <action selector="segmentedControlClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="mi2-DD-TpG"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fro-3B-Z53">
-                                <rect key="frame" x="350" y="637" width="44" height="44"/>
-                                <state key="normal" image="street road"/>
-                                <connections>
-                                    <action selector="btnStreetViewClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mmu-9B-G4Z"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaC-eT-OXN">
                                 <rect key="frame" x="350" y="40" width="44" height="44"/>
                                 <constraints>
@@ -61,32 +54,39 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdL-zL-Kx2">
-                                <rect key="frame" x="20" y="637" width="44" height="44"/>
+                                <rect key="frame" x="350" y="84" width="44" height="44"/>
                                 <state key="normal" image="camera"/>
                                 <connections>
-                                    <segue destination="Dsw-bV-bBm" kind="modal" id="TlP-iV-MyE"/>
+                                    <segue destination="Dsw-bV-bBm" kind="modal" identifier="ARViewSegue" id="TlP-iV-MyE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fro-3B-Z53">
+                                <rect key="frame" x="350" y="128" width="44" height="44"/>
+                                <state key="normal" image="Hunt"/>
+                                <connections>
+                                    <action selector="btnStreetViewClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mmu-9B-G4Z"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="height" secondItem="fro-3B-Z53" secondAttribute="height" id="0C7-lP-I05"/>
                             <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="2eJ-zd-pub"/>
-                            <constraint firstItem="fro-3B-Z53" firstAttribute="height" secondItem="YaC-eT-OXN" secondAttribute="height" id="6F6-qn-hMD"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="top" secondItem="YaC-eT-OXN" secondAttribute="bottom" id="4jU-xn-oVo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" constant="5" id="E00-ql-l6q"/>
                             <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KPf-I9-ktO"/>
-                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="bottom" secondItem="fro-3B-Z53" secondAttribute="bottom" id="Tgv-Ff-bIb"/>
-                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Uye-pV-HMI"/>
-                            <constraint firstItem="fro-3B-Z53" firstAttribute="width" secondItem="YaC-eT-OXN" secondAttribute="width" id="YZc-9S-QJx"/>
                             <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" id="YvC-lT-hA3"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="top" secondItem="gdL-zL-Kx2" secondAttribute="bottom" id="ZCJ-nu-tf8"/>
                             <constraint firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" constant="20" id="aaj-AI-nYc"/>
                             <constraint firstItem="YaC-eT-OXN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="fzp-7n-wf4"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" id="hRl-Zv-aTb"/>
                             <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" id="ha9-bE-aFt"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="width" secondItem="YaC-eT-OXN" secondAttribute="width" id="jZ2-MI-lEX"/>
                             <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kJZ-uf-nYV"/>
-                            <constraint firstItem="fro-3B-Z53" firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" id="oO0-4x-N3Z"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="width" secondItem="gdL-zL-Kx2" secondAttribute="width" id="lCR-W7-TQL"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="height" secondItem="YaC-eT-OXN" secondAttribute="height" id="mff-wo-c5y"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="height" secondItem="gdL-zL-Kx2" secondAttribute="height" id="nJJ-pW-tWr"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="trailing" secondItem="gdL-zL-Kx2" secondAttribute="trailing" id="tSW-60-Czx"/>
                             <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tVD-BV-Mc5"/>
-                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="fro-3B-Z53" secondAttribute="bottom" constant="20" id="ur0-cX-hv1"/>
-                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="width" secondItem="fro-3B-Z53" secondAttribute="width" id="yAF-c4-s6N"/>
                         </constraints>
                     </view>
                     <connections>
@@ -111,7 +111,24 @@
                     <view key="view" contentMode="scaleToFill" id="ZTf-pa-pNr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-WR-A8G">
+                                <rect key="frame" x="350" y="40" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="doV-Xy-0Jj"/>
+                                    <constraint firstAttribute="width" constant="44" id="ucF-qr-194"/>
+                                </constraints>
+                                <state key="normal" image="close view"/>
+                                <connections>
+                                    <action selector="btnCloseClicked:" destination="Dsw-bV-bBm" eventType="touchUpInside" id="trG-ER-xcT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="M5y-WR-A8G" secondAttribute="trailing" constant="20" id="9HX-G3-9fA"/>
+                            <constraint firstItem="M5y-WR-A8G" firstAttribute="top" secondItem="TnF-Dl-ZXM" secondAttribute="bottom" constant="20" id="KRn-fX-CvH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZF-wn-Qz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,8 +137,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" width="50" height="50"/>
+        <image name="Hunt" width="26" height="26"/>
+        <image name="camera" width="26" height="26"/>
+        <image name="close view" width="50" height="50"/>
         <image name="refresh" width="26" height="26"/>
-        <image name="street road" width="50" height="50"/>
     </resources>
 </document>

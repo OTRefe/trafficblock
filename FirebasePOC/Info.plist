@@ -24,6 +24,8 @@
 	<string>Do you want to allow location permission</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Grant location permission always</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Do you want to allow camera permission</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

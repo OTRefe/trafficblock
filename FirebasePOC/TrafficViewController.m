@@ -27,8 +27,6 @@
     CLGeocoder *geoCoder;
     BOOL isKeyNull;
     __block NSDictionary *dictReturn;
-    __block CLPlacemark *placemarkStartLoc;
-    __block  CLPlacemark *placemarkEndLoc;
 }
 
 @end
@@ -219,6 +217,15 @@
     [self drawOverlay];
 }
 
+#pragma mark - Navigation
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"ARViewSegue"]){
+        ARViewController *arViewController = segue.destinationViewController;
+        NSLog(@"Array Overlay Details : %@", arrOverlayDetails);
+        arViewController.arrPoints = arrOverlayDetails;
+    }
+}
 
 
 #pragma mark - Custom Methods
@@ -259,6 +266,10 @@
     /*  //centering user location in mapview
      MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
      [_mapView setRegion:adjustedRegion animated:YES];*/
+    
+//    //removing overalys
+//    [_mapView removeOverlays: [_mapView overlays]];
+    
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -268,39 +279,41 @@
                            }
                        }
                    }];
-                       [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                           NSDictionary *dictData = snapshot.value;
-                           NSLog(@"Retrieved Dictionary Data : %@",dictData);
-                           FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
-                           [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                               //removing overalys
-                               [_mapView removeOverlays: [_mapView overlays]];
-                               
-                               for (FIRDataSnapshot *child in snapshot.children) {
-                                   double lat = [child.value[@"latitude"] doubleValue];
-                                   double lon = [child.value[@"longitude"] doubleValue];
-                                   newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
-                                   int distance = [newLocation distanceFromLocation:userLoc];
-                                   NSLog(@"DISTANCE %d", distance);
-                                   if(distance >100 && distance <1000000){
-                                       NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
-                                       NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
-                                       NSLog(@"%@",strLat);
-                                       NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
-                                       NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
-                                       [dictOverlayDetails setValue:strType forKey:@"type"];
-                                       [dictOverlayDetails setValue:strLat forKey:@"latitude"];
-                                       [dictOverlayDetails setValue:strLon forKey:@"longitude"];
-                                       [arrOverlayDetails addObject:dictOverlayDetails];
-                                       
-                                       // adding circle overlay
-                                       MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
-                                       [_mapView addOverlay:circleForUserLoc];
-                                   }
-                               }
-                               
-                           }];
-                       }];
-                   //}];
+    [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSDictionary *dictData = snapshot.value;
+        NSLog(@"Retrieved Dictionary Data : %@",dictData);
+        FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
+        [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            //removing overalys
+            [_mapView removeOverlays: [_mapView overlays]];
+            for (FIRDataSnapshot *child in snapshot.children) {
+                double lat = [child.value[@"latitude"] doubleValue];
+                double lon = [child.value[@"longitude"] doubleValue];
+                newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+                int distance = [newLocation distanceFromLocation:userLoc];
+                NSLog(@"DISTANCE %d", distance);
+                if(distance >0 && distance <100000){
+                    NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
+                    NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
+                    NSLog(@"%@",strLat);
+                    NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
+                    NSString *strDistance = [[NSString alloc]initWithFormat:@"%d",distance];
+                    
+                    NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
+                    [dictOverlayDetails setValue:strType forKey:@"type"];
+                    [dictOverlayDetails setValue:strLat forKey:@"latitude"];
+                    [dictOverlayDetails setValue:strLon forKey:@"longitude"];
+                    [dictOverlayDetails setValue:strDistance forKey:@"distance"];
+                    [dictOverlayDetails setValue:child.value[@"endLocation"] forKey:@"placemark"];
+                    [arrOverlayDetails addObject:dictOverlayDetails];
+                    // adding circle overlay
+                    MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
+                    [_mapView addOverlay:circleForUserLoc];
+                }
+            }
+            
+        }];
+    }];
+    
 }
 @end
