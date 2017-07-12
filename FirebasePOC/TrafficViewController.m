@@ -165,7 +165,7 @@
                 }
             }];
             if(!isKeyNull){
-                [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": [dictLocDetails valueForKey:@"Type"],@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
+                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
             }
             [self drawOverlay];
         }];
@@ -183,7 +183,7 @@
                 }
             }];
             if(!isKeyNull){
-                [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": [dictLocDetails valueForKey:@"Type"],@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
+                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
             }
             [self drawOverlay];
         }];
@@ -201,7 +201,7 @@
                 }
             }];
             if(!isKeyNull){
-                [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": [dictLocDetails valueForKey:@"Type"],@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
+                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
             }
             [self drawOverlay];
         }];
@@ -295,7 +295,6 @@
                 if(distance >0 && distance <100000){
                     NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                     NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
-                    NSLog(@"%@",strLat);
                     NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
                     NSString *strDistance = [[NSString alloc]initWithFormat:@"%d",distance];
                     
@@ -306,6 +305,7 @@
                     [dictOverlayDetails setValue:strDistance forKey:@"distance"];
                     [dictOverlayDetails setValue:child.value[@"endLocation"] forKey:@"placemark"];
                     [arrOverlayDetails addObject:dictOverlayDetails];
+                    
                     // adding circle overlay
                     MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                     [_mapView addOverlay:circleForUserLoc];
@@ -315,5 +315,20 @@
         }];
     }];
     
+}
+
+-(void)addDataToFirebase:(NSString *)title{
+    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
+}
+
+-(void)showAlert:(NSString *)segmentTitle{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Do you want to update traffic status" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self addDataToFirebase:segmentTitle];
+    }];
+    UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
+    [alert addAction:okButton];
+    [alert addAction:cancelButton];
+    [self presentViewController:alert animated:YES completion:Nil];
 }
 @end
