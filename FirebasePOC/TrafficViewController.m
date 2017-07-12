@@ -165,7 +165,7 @@
                 }
             }];
             if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
+                [self showAlert:strSegmentTitle];
             }
             [self drawOverlay];
         }];
@@ -183,7 +183,7 @@
                 }
             }];
             if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
+                 [self showAlert:strSegmentTitle];
             }
             [self drawOverlay];
         }];
@@ -201,8 +201,9 @@
                 }
             }];
             if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
+                [self showAlert:strSegmentTitle];
             }
+            
             [self drawOverlay];
         }];
     }
@@ -314,7 +315,6 @@
             
         }];
     }];
-    
 }
 
 -(void)addDataToFirebase:(NSString *)title{
