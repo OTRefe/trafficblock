@@ -151,59 +151,13 @@
     
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
-            }
-            [self drawOverlay];
-        }];
+        [self showAlert:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
-            }
-            [self drawOverlay];
-        }];
+        [self showAlert:strSegmentTitle];
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
-            }
-            [self drawOverlay];
-        }];
-        
+        [self showAlert:strSegmentTitle];
     }
 }
 
@@ -316,13 +270,32 @@
 }
 
 -(void)addDataToFirebase:(NSString *)title{
-    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
+    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"FIRDatabase Reference :%@", ref);
+    }];
 }
 
 -(void)showAlert:(NSString *)segmentTitle{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Do you want to update traffic status" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self addDataToFirebase:segmentTitle];
+        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
+            dictLocDetails = dict;
+            NSArray *keys = [dictLocDetails allKeys];
+            NSLog(@"Keys : %@", keys);
+            isKeyNull = false;
+            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
+                if([object isEqual:NULL]){
+                    stop = false;
+                    isKeyNull = true;
+                }
+            }];
+            if(!isKeyNull){
+                [self addDataToFirebase:segmentTitle];
+            }
+            [self drawOverlay];
+        }];
+
+       // [self addDataToFirebase:segmentTitle];
     }];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
     [alert addAction:okButton];
