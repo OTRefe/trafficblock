@@ -25,6 +25,8 @@
     NSMutableArray *arrLocations;
     MKCircleRenderer *circleRenderer;
     CLGeocoder *geoCoder;
+    UIActivityIndicatorView *activityIndicator;
+    UIView *indicatorView;
     BOOL isKeyNull;
     __block NSDictionary *dictReturn;
 }
@@ -38,17 +40,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //Initialisation
+    geoCoder = [[CLGeocoder alloc]init];
+    arrLocations = [[NSMutableArray alloc]init];
+    arrOverlayDetails = [[NSMutableArray alloc]init];
     locManager = [[CLLocationManager alloc]init];
+    
     locManager.delegate = self;
     [locManager requestWhenInUseAuthorization];
     [locManager requestAlwaysAuthorization];
     [locManager startUpdatingLocation];
     
     _mapView.delegate = self;
-    
-    geoCoder = [[CLGeocoder alloc]init];
-    arrLocations = [[NSMutableArray alloc]init];
-    arrOverlayDetails = [[NSMutableArray alloc]init];
+    _mapView.showsUserLocation = YES;
     
     //Customizing segmented control
     NSArray *arrSegments = [_segmentedControl subviews];
@@ -59,13 +64,17 @@
 
     //Setting mapview type
     _mapView.mapType = MKMapTypeStandard;
+    
     //Retrieve device unique ID
     strIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 
     self.FIRDbRef = [[FIRDatabase database] reference];
+<<<<<<< HEAD
     _mapView.showsUserLocation = YES;
    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
 
+=======
+>>>>>>> Feature/Ann_OverlayWithDateComparison
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,6 +130,7 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
     
     [self addCircle:newLoc];
+    
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
     for (id annotation in _mapView.annotations){
@@ -150,9 +160,9 @@
 - (IBAction)segmentedControlClicked:(id)sender {
     NSInteger intSelectedSegment = _segmentedControl.selectedSegmentIndex;
     strSegmentTitle = [_segmentedControl titleForSegmentAtIndex:_segmentedControl.selectedSegmentIndex];
-    
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
+<<<<<<< HEAD
         [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
             dictLocDetails = dict;
             NSArray *keys = [dictLocDetails allKeys];
@@ -206,6 +216,15 @@
             
             [self drawOverlay];
         }];
+=======
+        [self showAlert:strSegmentTitle];
+    }else if (intSelectedSegment == 1){
+        // FREE MOVING CLICKED
+        [self showAlert:strSegmentTitle];
+    }else if (intSelectedSegment == 2){
+        // BLOCK CLICKED
+        [self showAlert:strSegmentTitle];
+>>>>>>> Feature/Ann_OverlayWithDateComparison
     }
 }
 
@@ -256,7 +275,7 @@
         if (arrLocations.count > 3) {
         dictReturn = [[NSDictionary alloc]init];
         arrCount = arrLocations.count;
-        dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"StartLocation":[arrLocations objectAtIndex:arrLocations.count-3],@"EndLocation":[arrLocations lastObject], @"Latitude":latitude, @"Longitude":longitude};
+            dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"StartLocation":[arrLocations objectAtIndex:arrLocations.count-3],@"EndLocation":[arrLocations lastObject], @"Latitude":latitude, @"Longitude":longitude, @"Date":[NSString stringWithFormat:@"%@",[NSDate date]]};
         NSLog(@"Detail Dictionary : %@",dictReturn);
         completionBlock(dictReturn,error);
         }
@@ -264,12 +283,10 @@
 }
 
 -(void)drawOverlay{
-    /*  //centering user location in mapview
-     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
-     [_mapView setRegion:adjustedRegion animated:YES];*/
+    [self showActivityIndicator];
     
-//    //removing overalys
-//    [_mapView removeOverlays: [_mapView overlays]];
+    //removing overalys
+    [_mapView removeOverlays: [_mapView overlays]];
     
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -285,15 +302,27 @@
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
         [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            
             //removing overalys
             [_mapView removeOverlays: [_mapView overlays]];
+            
             for (FIRDataSnapshot *child in snapshot.children) {
                 double lat = [child.value[@"latitude"] doubleValue];
                 double lon = [child.value[@"longitude"] doubleValue];
                 newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
                 int distance = [newLocation distanceFromLocation:userLoc];
                 NSLog(@"DISTANCE %d", distance);
-                if(distance >0 && distance <100000){
+                if(distance >0 && distance <10000){
+                    //gets users current date
+                    NSDate *currentDate = [NSDate date];
+                    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+                    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss +0000"];
+                    NSLog(@"Current Date :%@",[dateFormatter stringFromDate:currentDate]);
+                    
+                    NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
+                    NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
+                    // 1800 = 30mins*60sec
+                    if (secondsBetween > 1800) {
                     NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                     NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                     NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
@@ -311,24 +340,62 @@
                     MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                     [_mapView addOverlay:circleForUserLoc];
                 }
+                }
             }
-            
+            [self hideActivityIndicator];
         }];
     }];
 }
 
 -(void)addDataToFirebase:(NSString *)title{
-    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
+    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"], @"date": [dictLocDetails valueForKey:@"Date"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"FIRDatabase Reference :%@", ref);
+        [self hideActivityIndicator];
+    }];
 }
 
 -(void)showAlert:(NSString *)segmentTitle{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Do you want to update traffic status" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self addDataToFirebase:segmentTitle];
+        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
+            dictLocDetails = dict;
+            NSArray *keys = [dictLocDetails allKeys];
+            NSLog(@"Keys : %@", keys);
+            isKeyNull = false;
+            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
+                if([object isEqual:NULL]){
+                    stop = false;
+                    isKeyNull = true;
+                }
+            }];
+            if(!isKeyNull){
+                [self showActivityIndicator];
+                [self addDataToFirebase:segmentTitle];
+            }
+            [self drawOverlay];
+        }];
+
+       // [self addDataToFirebase:segmentTitle];
     }];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
     [alert addAction:okButton];
     [alert addAction:cancelButton];
     [self presentViewController:alert animated:YES completion:Nil];
+}
+
+-(void)showActivityIndicator{
+    indicatorView = [[UIView alloc]initWithFrame:self.view.bounds];
+    indicatorView.backgroundColor = [UIColor colorWithRed:0/255 green:0/255 blue:0/255 alpha:0.6];
+    [self.view addSubview:indicatorView];
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activityIndicator setBackgroundColor:[UIColor clearColor]];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = self.view.center;
+    [activityIndicator startAnimating];
+    [indicatorView addSubview:activityIndicator];
+}
+
+-(void)hideActivityIndicator{
+    [indicatorView removeFromSuperview];
 }
 @end

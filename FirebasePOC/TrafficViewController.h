@@ -34,6 +34,8 @@
 -(void)zoomInto:(CLLocationCoordinate2D)zoomLocation distance:(CGFloat)distance animated:(BOOL)animated;
 -(void)addCircle:(CLLocation *)location;
 -(void)showAlert:(NSString *)segmentTitle;
+-(void)showActivityIndicator;
+-(void)hideActivityIndicator;
 
 @end
 
