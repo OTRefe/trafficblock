@@ -219,7 +219,6 @@
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
         [self showAlert:strSegmentTitle];
-
         [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
@@ -227,7 +226,6 @@
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
         [self showAlertConfirmation:strSegmentTitle];
-
     }
 }
 
@@ -303,6 +301,9 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+
+        //shows activity indicator
+
         [self showActivityIndicator];
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
@@ -348,6 +349,8 @@
                     }
                 }
             }
+
+            //hides activity indicator
             [self hideActivityIndicator];
         }];
     }];
@@ -410,4 +413,5 @@
 -(void)hideActivityIndicator{
     [indicatorView removeFromSuperview];
 }
+
 @end
