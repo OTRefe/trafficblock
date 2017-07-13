@@ -36,6 +36,11 @@
 -(void)showAlert:(NSString *)segmentTitle;
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
+-(void)showAlertConfirmation:(NSString *)segmentTitle;
+-(void)showAlertRefresh;
+-(void)showActivityIndicator;
+-(void)hideActivityIndicator;
+
 
 @end
 

@@ -74,13 +74,13 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self drawOverlay];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [self drawOverlay];
 }
 
 #pragma  mark - Mapview delegate methods
@@ -219,6 +219,15 @@
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
         [self showAlert:strSegmentTitle];
+
+        [self showAlertConfirmation:strSegmentTitle];
+    }else if (intSelectedSegment == 1){
+        // FREE MOVING CLICKED
+        [self showAlertConfirmation:strSegmentTitle];
+    }else if (intSelectedSegment == 2){
+        // BLOCK CLICKED
+        [self showAlertConfirmation:strSegmentTitle];
+
     }
 }
 
@@ -229,6 +238,9 @@
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
     [self drawOverlay];
+    
+  //  [self showAlertRefresh];
+    
 }
 
 #pragma mark - Navigation
@@ -280,6 +292,7 @@
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
     
+    
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -290,10 +303,11 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        //[self showActivityIndicator];
+        [self showActivityIndicator];
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
+        
         [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             
             //removing overalys
@@ -346,7 +360,7 @@
     }];
 }
 
--(void)showAlert:(NSString *)segmentTitle{
+-(void)showAlertConfirmation:(NSString *)segmentTitle{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Do you want to update traffic status" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
@@ -370,6 +384,14 @@
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
     [alert addAction:okButton];
     [alert addAction:cancelButton];
+    [self presentViewController:alert animated:YES completion:Nil];
+}
+-(void)showAlertRefresh{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Please Wait" message:@"Updating..." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self drawOverlay];
+        }];
+    [alert addAction:okButton];
     [self presentViewController:alert animated:YES completion:Nil];
 }
 
