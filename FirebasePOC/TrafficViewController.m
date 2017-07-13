@@ -69,12 +69,9 @@
     strIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 
     self.FIRDbRef = [[FIRDatabase database] reference];
-<<<<<<< HEAD
     _mapView.showsUserLocation = YES;
    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
 
-=======
->>>>>>> Feature/Ann_OverlayWithDateComparison
 }
 
 - (void)didReceiveMemoryWarning {
@@ -162,7 +159,6 @@
     strSegmentTitle = [_segmentedControl titleForSegmentAtIndex:_segmentedControl.selectedSegmentIndex];
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
-<<<<<<< HEAD
         [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
             dictLocDetails = dict;
             NSArray *keys = [dictLocDetails allKeys];
@@ -216,7 +212,6 @@
             
             [self drawOverlay];
         }];
-=======
         [self showAlert:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
@@ -224,7 +219,6 @@
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
         [self showAlert:strSegmentTitle];
->>>>>>> Feature/Ann_OverlayWithDateComparison
     }
 }
 
@@ -296,7 +290,7 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        [self showActivityIndicator];
+        //[self showActivityIndicator];
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
@@ -304,7 +298,7 @@
             
             //removing overalys
             [_mapView removeOverlays: [_mapView overlays]];
-            
+            [self showActivityIndicator];
             for (FIRDataSnapshot *child in snapshot.children) {
                 double lat = [child.value[@"latitude"] doubleValue];
                 double lon = [child.value[@"longitude"] doubleValue];
