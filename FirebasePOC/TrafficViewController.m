@@ -151,7 +151,6 @@
     
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
-<<<<<<< Updated upstream
         [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
             dictLocDetails = dict;
             NSArray *keys = [dictLocDetails allKeys];
@@ -205,7 +204,6 @@
             [self drawOverlay];
         }];
         
-=======
         [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
@@ -213,7 +211,6 @@
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
         [self showAlertConfirmation:strSegmentTitle];
->>>>>>> Stashed changes
     }
 }
 
@@ -292,12 +289,8 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-<<<<<<< Updated upstream
-=======
         //shows activity indicator
         [self showActivityIndicator];
-        
->>>>>>> Stashed changes
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
@@ -330,12 +323,8 @@
                     [_mapView addOverlay:circleForUserLoc];
                 }
             }
-<<<<<<< Updated upstream
-            
-=======
             //hides activity indicator
             [self hideActivityIndicator];
->>>>>>> Stashed changes
         }];
     }];
     
@@ -355,9 +344,6 @@
     [alert addAction:cancelButton];
     [self presentViewController:alert animated:YES completion:Nil];
 }
-<<<<<<< Updated upstream
-=======
-
 -(void)showAlertRefresh{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Please Wait" message:@"Updating..." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
@@ -382,5 +368,5 @@
 -(void)hideActivityIndicator{
     [indicatorView removeFromSuperview];
 }
->>>>>>> Stashed changes
+
 @end
