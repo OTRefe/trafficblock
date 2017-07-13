@@ -67,13 +67,13 @@
    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self drawOverlay];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [self drawOverlay];
 }
 
 #pragma  mark - Mapview delegate methods
@@ -151,6 +151,7 @@
     
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
+<<<<<<< Updated upstream
         [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
             dictLocDetails = dict;
             NSArray *keys = [dictLocDetails allKeys];
@@ -204,6 +205,15 @@
             [self drawOverlay];
         }];
         
+=======
+        [self showAlertConfirmation:strSegmentTitle];
+    }else if (intSelectedSegment == 1){
+        // FREE MOVING CLICKED
+        [self showAlertConfirmation:strSegmentTitle];
+    }else if (intSelectedSegment == 2){
+        // BLOCK CLICKED
+        [self showAlertConfirmation:strSegmentTitle];
+>>>>>>> Stashed changes
     }
 }
 
@@ -214,6 +224,9 @@
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
     [self drawOverlay];
+    
+  //  [self showAlertRefresh];
+    
 }
 
 #pragma mark - Navigation
@@ -268,6 +281,7 @@
 //    //removing overalys
 //    [_mapView removeOverlays: [_mapView overlays]];
     
+    
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -278,9 +292,16 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+<<<<<<< Updated upstream
+=======
+        //shows activity indicator
+        [self showActivityIndicator];
+        
+>>>>>>> Stashed changes
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
+        
         [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             //removing overalys
             [_mapView removeOverlays: [_mapView overlays]];
@@ -309,7 +330,12 @@
                     [_mapView addOverlay:circleForUserLoc];
                 }
             }
+<<<<<<< Updated upstream
             
+=======
+            //hides activity indicator
+            [self hideActivityIndicator];
+>>>>>>> Stashed changes
         }];
     }];
     
@@ -319,7 +345,7 @@
     [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}];
 }
 
--(void)showAlert:(NSString *)segmentTitle{
+-(void)showAlertConfirmation:(NSString *)segmentTitle{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Do you want to update traffic status" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self addDataToFirebase:segmentTitle];
@@ -329,4 +355,32 @@
     [alert addAction:cancelButton];
     [self presentViewController:alert animated:YES completion:Nil];
 }
+<<<<<<< Updated upstream
+=======
+
+-(void)showAlertRefresh{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Please Wait" message:@"Updating..." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self drawOverlay];
+        }];
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:YES completion:Nil];
+}
+
+-(void)showActivityIndicator{
+    indicatorView = [[UIView alloc]initWithFrame:self.view.bounds];
+    indicatorView.backgroundColor = [UIColor colorWithRed:0/255 green:0/255 blue:0/255 alpha:0.6];
+    [self.view addSubview:indicatorView];
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activityIndicator setBackgroundColor:[UIColor clearColor]];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = self.view.center;
+    [activityIndicator startAnimating];
+    [indicatorView addSubview:activityIndicator];
+}
+
+-(void)hideActivityIndicator{
+    [indicatorView removeFromSuperview];
+}
+>>>>>>> Stashed changes
 @end
