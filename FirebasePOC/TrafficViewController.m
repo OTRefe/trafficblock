@@ -171,7 +171,7 @@
                 }
             }];
             if(!isKeyNull){
-                [self showAlert:strSegmentTitle];
+                [self showAlertConfirmation:strSegmentTitle];
             }
             [self drawOverlay];
         }];
@@ -189,7 +189,7 @@
                 }
             }];
             if(!isKeyNull){
-                 [self showAlert:strSegmentTitle];
+                 [self showAlertConfirmation:strSegmentTitle];
             }
             [self drawOverlay];
         }];
@@ -207,18 +207,18 @@
                 }
             }];
             if(!isKeyNull){
-                [self showAlert:strSegmentTitle];
+                [self showAlertConfirmation:strSegmentTitle];
             }
             
             [self drawOverlay];
         }];
-        [self showAlert:strSegmentTitle];
+        [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
-        [self showAlert:strSegmentTitle];
+        [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
-        [self showAlert:strSegmentTitle];
+        [self showAlertConfirmation:strSegmentTitle];
         [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
