@@ -219,8 +219,6 @@
 }
 
 -(void)drawOverlay{
-    [self showActivityIndicator];
-    
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
     
@@ -234,6 +232,7 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        [self showActivityIndicator];
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
@@ -258,29 +257,28 @@
                     NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
                     // 1800 = 30mins*60sec
                     if (secondsBetween > 1800) {
-                    NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
-                    NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
-                    NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
-                    NSString *strDistance = [[NSString alloc]initWithFormat:@"%d",distance];
-                    
-                    NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
-                    [dictOverlayDetails setValue:strType forKey:@"type"];
-                    [dictOverlayDetails setValue:strLat forKey:@"latitude"];
-                    [dictOverlayDetails setValue:strLon forKey:@"longitude"];
-                    [dictOverlayDetails setValue:strDistance forKey:@"distance"];
-                    [dictOverlayDetails setValue:child.value[@"endLocation"] forKey:@"placemark"];
-                    [arrOverlayDetails addObject:dictOverlayDetails];
-                    
-                    // adding circle overlay
-                    MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
-                    [_mapView addOverlay:circleForUserLoc];
-                }
+                        NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
+                        NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
+                        NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
+                        NSString *strDistance = [[NSString alloc]initWithFormat:@"%d",distance];
+                        
+                        NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
+                        [dictOverlayDetails setValue:strType forKey:@"type"];
+                        [dictOverlayDetails setValue:strLat forKey:@"latitude"];
+                        [dictOverlayDetails setValue:strLon forKey:@"longitude"];
+                        [dictOverlayDetails setValue:strDistance forKey:@"distance"];
+                        [dictOverlayDetails setValue:child.value[@"endLocation"] forKey:@"placemark"];
+                        [arrOverlayDetails addObject:dictOverlayDetails];
+                        
+                        // adding circle overlay
+                        MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
+                        [_mapView addOverlay:circleForUserLoc];
+                    }
                 }
             }
             [self hideActivityIndicator];
         }];
     }];
-    
 }
 
 -(void)addDataToFirebase:(NSString *)title{
