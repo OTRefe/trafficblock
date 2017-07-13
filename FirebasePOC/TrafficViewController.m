@@ -251,10 +251,9 @@
                 if(distance >0 && distance <10000){
                     //gets users current date
                     NSDate *currentDate = [NSDate date];
+                    //date formatting
                     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
                     [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss +0000"];
-                    NSLog(@"Current Date :%@",[dateFormatter stringFromDate:currentDate]);
-                    
                     NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
                     NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
                     // 1800 = 30mins*60sec
@@ -311,8 +310,6 @@
             }
             [self drawOverlay];
         }];
-
-       // [self addDataToFirebase:segmentTitle];
     }];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
     [alert addAction:okButton];
