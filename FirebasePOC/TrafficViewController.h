@@ -33,9 +33,6 @@
 -(void)addDataToFirebase:(NSString *)title;
 -(void)zoomInto:(CLLocationCoordinate2D)zoomLocation distance:(CGFloat)distance animated:(BOOL)animated;
 -(void)addCircle:(CLLocation *)location;
-<<<<<<< Updated upstream
--(void)showAlert:(NSString *)segmentTitle;
-=======
 -(void)showAlertConfirmation:(NSString *)segmentTitle;
 -(void)showAlertRefresh;
 -(void)showActivityIndicator;

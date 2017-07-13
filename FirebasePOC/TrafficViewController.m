@@ -151,61 +151,6 @@
     
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
-<<<<<<< Updated upstream
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
-            }
-            [self drawOverlay];
-        }];
-    }else if (intSelectedSegment == 1){
-        // FREE MOVING CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
-            }
-            [self drawOverlay];
-        }];
-    }else if (intSelectedSegment == 2){
-        // BLOCK CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self addDataToFirebase:[dictLocDetails valueForKey:@"Type"]];
-            }
-            [self drawOverlay];
-        }];
-        
-=======
         [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
@@ -213,7 +158,6 @@
     }else if (intSelectedSegment == 2){
         // BLOCK CLICKED
         [self showAlertConfirmation:strSegmentTitle];
->>>>>>> Stashed changes
     }
 }
 
@@ -278,9 +222,6 @@
      MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
      [_mapView setRegion:adjustedRegion animated:YES];*/
     
-//    //removing overalys
-//    [_mapView removeOverlays: [_mapView overlays]];
-    
     
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -292,12 +233,9 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-<<<<<<< Updated upstream
-=======
         //shows activity indicator
         [self showActivityIndicator];
         
->>>>>>> Stashed changes
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
@@ -330,9 +268,6 @@
                     [_mapView addOverlay:circleForUserLoc];
                 }
             }
-<<<<<<< Updated upstream
-            
-=======
             //hides activity indicator
             [self hideActivityIndicator];
 >>>>>>> Stashed changes
