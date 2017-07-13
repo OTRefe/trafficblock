@@ -40,17 +40,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //Initialisation
+    geoCoder = [[CLGeocoder alloc]init];
+    arrLocations = [[NSMutableArray alloc]init];
+    arrOverlayDetails = [[NSMutableArray alloc]init];
     locManager = [[CLLocationManager alloc]init];
+    
     locManager.delegate = self;
     [locManager requestWhenInUseAuthorization];
     [locManager requestAlwaysAuthorization];
     [locManager startUpdatingLocation];
     
     _mapView.delegate = self;
-    
-    geoCoder = [[CLGeocoder alloc]init];
-    arrLocations = [[NSMutableArray alloc]init];
-    arrOverlayDetails = [[NSMutableArray alloc]init];
+    _mapView.showsUserLocation = YES;
     
     //Customizing segmented control
     NSArray *arrSegments = [_segmentedControl subviews];
@@ -61,11 +64,11 @@
 
     //Setting mapview type
     _mapView.mapType = MKMapTypeStandard;
+    
     //Retrieve device unique ID
     strIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 
     self.FIRDbRef = [[FIRDatabase database] reference];
-    _mapView.showsUserLocation = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,6 +123,7 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
     
     [self addCircle:newLoc];
+    
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
     for (id annotation in _mapView.annotations){
@@ -149,7 +153,6 @@
 - (IBAction)segmentedControlClicked:(id)sender {
     NSInteger intSelectedSegment = _segmentedControl.selectedSegmentIndex;
     strSegmentTitle = [_segmentedControl titleForSegmentAtIndex:_segmentedControl.selectedSegmentIndex];
-    
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
         [self showAlert:strSegmentTitle];
@@ -208,7 +211,7 @@
         if (arrLocations.count > 3) {
         dictReturn = [[NSDictionary alloc]init];
         arrCount = arrLocations.count;
-        dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"StartLocation":[arrLocations objectAtIndex:arrLocations.count-3],@"EndLocation":[arrLocations lastObject], @"Latitude":latitude, @"Longitude":longitude};
+            dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"StartLocation":[arrLocations objectAtIndex:arrLocations.count-3],@"EndLocation":[arrLocations lastObject], @"Latitude":latitude, @"Longitude":longitude, @"Date":[NSString stringWithFormat:@"%@",[NSDate date]]};
         NSLog(@"Detail Dictionary : %@",dictReturn);
         completionBlock(dictReturn,error);
         }
@@ -216,10 +219,6 @@
 }
 
 -(void)drawOverlay{
-    /*  //centering user location in mapview
-     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.coordinate, 8000, 8000)];
-     [_mapView setRegion:adjustedRegion animated:YES];*/
-    
     [self showActivityIndicator];
     
     //removing overalys
@@ -239,15 +238,27 @@
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
         [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            
             //removing overalys
             [_mapView removeOverlays: [_mapView overlays]];
+            
             for (FIRDataSnapshot *child in snapshot.children) {
                 double lat = [child.value[@"latitude"] doubleValue];
                 double lon = [child.value[@"longitude"] doubleValue];
                 newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
                 int distance = [newLocation distanceFromLocation:userLoc];
                 NSLog(@"DISTANCE %d", distance);
-                if(distance >0 && distance <100000){
+                if(distance >0 && distance <10000){
+                    //gets users current date
+                    NSDate *currentDate = [NSDate date];
+                    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+                    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss +0000"];
+                    NSLog(@"Current Date :%@",[dateFormatter stringFromDate:currentDate]);
+                    
+                    NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
+                    NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
+                    // 1800 = 30mins*60sec
+                    if (secondsBetween > 1800) {
                     NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                     NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                     NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
@@ -265,6 +276,7 @@
                     MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                     [_mapView addOverlay:circleForUserLoc];
                 }
+                }
             }
             [self hideActivityIndicator];
         }];
@@ -273,7 +285,7 @@
 }
 
 -(void)addDataToFirebase:(NSString *)title{
-    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"], @"date": [dictLocDetails valueForKey:@"Date"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         NSLog(@"FIRDatabase Reference :%@", ref);
         [self hideActivityIndicator];
     }];
