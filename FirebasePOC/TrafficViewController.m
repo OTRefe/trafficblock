@@ -61,26 +61,26 @@
     [[arrSegments objectAtIndex:2] setBackgroundColor:[UIColor orangeColor]];
     [[arrSegments objectAtIndex:1] setBackgroundColor:[UIColor colorWithRed:0 green:255 blue:0 alpha:1]];
     [[arrSegments objectAtIndex:0] setBackgroundColor:[UIColor redColor]];
-
+    
     //Setting mapview type
     _mapView.mapType = MKMapTypeStandard;
     
     //Retrieve device unique ID
     strIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-
+    
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
 
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self drawOverlay];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self drawOverlay];
 }
 
 #pragma  mark - Mapview delegate methods
@@ -159,66 +159,6 @@
     strSegmentTitle = [_segmentedControl titleForSegmentAtIndex:_segmentedControl.selectedSegmentIndex];
     if(intSelectedSegment == 0){
         // SLOW MOVING CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error){
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop){
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self showAlertConfirmation:strSegmentTitle];
-            }
-            [self drawOverlay];
-        }];
-    }else if (intSelectedSegment == 1){
-        // FREE MOVING CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                 [self showAlertConfirmation:strSegmentTitle];
-            }
-            [self drawOverlay];
-        }];
-    }else if (intSelectedSegment == 2){
-        // BLOCK CLICKED
-        [self locDetails:strSegmentTitle :^(NSDictionary *dict,NSError *error) {
-            dictLocDetails = dict;
-            NSArray *keys = [dictLocDetails allKeys];
-            NSLog(@"Keys : %@", keys);
-            isKeyNull = false;
-            [dictLocDetails enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-                if([object isEqual:NULL]){
-                    stop = false;
-                    isKeyNull = true;
-                }
-            }];
-            if(!isKeyNull){
-                [self showAlertConfirmation:strSegmentTitle];
-            }
-            
-            [self drawOverlay];
-        }];
-        [self showAlertConfirmation:strSegmentTitle];
-    }else if (intSelectedSegment == 1){
-        // FREE MOVING CLICKED
-        [self showAlertConfirmation:strSegmentTitle];
-    }else if (intSelectedSegment == 2){
-        // BLOCK CLICKED
-        [self showAlertConfirmation:strSegmentTitle];
         [self showAlertConfirmation:strSegmentTitle];
     }else if (intSelectedSegment == 1){
         // FREE MOVING CLICKED
@@ -236,9 +176,6 @@
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
     [self drawOverlay];
-    
-  //  [self showAlertRefresh];
-    
 }
 
 #pragma mark - Navigation
@@ -259,7 +196,7 @@
     MKPointAnnotation *anno = [[MKPointAnnotation alloc] init];
     anno.coordinate = location.coordinate;
     [_mapView addAnnotation:anno];
-
+    
     //add overlay
     [_mapView addOverlay:[MKCircle circleWithCenterCoordinate:location.coordinate radius:50]];
     
@@ -277,19 +214,20 @@
     NSError *error;
     if(!(latitude == Nil || longitude == Nil || strIdentifier == Nil)){
         if (arrLocations.count > 3) {
-        dictReturn = [[NSDictionary alloc]init];
-        arrCount = arrLocations.count;
+            dictReturn = [[NSDictionary alloc]init];
+            arrCount = arrLocations.count;
             dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"StartLocation":[arrLocations objectAtIndex:arrLocations.count-3],@"EndLocation":[arrLocations lastObject], @"Latitude":latitude, @"Longitude":longitude, @"Date":[NSString stringWithFormat:@"%@",[NSDate date]]};
-        NSLog(@"Detail Dictionary : %@",dictReturn);
-        completionBlock(dictReturn,error);
+            NSLog(@"Detail Dictionary : %@",dictReturn);
+            completionBlock(dictReturn,error);
         }
     }
 }
 
 -(void)drawOverlay{
+    
+    
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
-    
     
     [geoCoder reverseGeocodeLocation:userLoc
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -301,14 +239,12 @@
                        }
                    }];
     [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-
         //shows activity indicator
-
-        [self showActivityIndicator];
+          [self showActivityIndicator];
+        
         NSDictionary *dictData = snapshot.value;
         NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
-        
         [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             
             //removing overalys
@@ -389,14 +325,6 @@
     [alert addAction:cancelButton];
     [self presentViewController:alert animated:YES completion:Nil];
 }
--(void)showAlertRefresh{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Please Wait" message:@"Updating..." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            [self drawOverlay];
-        }];
-    [alert addAction:okButton];
-    [self presentViewController:alert animated:YES completion:Nil];
-}
 
 -(void)showActivityIndicator{
     indicatorView = [[UIView alloc]initWithFrame:self.view.bounds];
@@ -413,5 +341,5 @@
 -(void)hideActivityIndicator{
     [indicatorView removeFromSuperview];
 }
-
 @end
+
