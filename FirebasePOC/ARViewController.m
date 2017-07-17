@@ -61,11 +61,11 @@
         NSString *imageName=@"";
         
         if ([text isEqualToString:@"Block"]) {
-            imageName = @"red box";
+            imageName = @"red bubble";
         }else if ([text isEqualToString:@"Slow Moving"]){
-            imageName = @"blue box";
+            imageName = @"orange bubble";
         }else{
-            imageName = @"green box"; //"Free Moving"
+            imageName = @"green bubble"; //"Free Moving"
         }
         
         UIImageView *boxView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
