@@ -13,6 +13,8 @@
 @synthesize arrPoints;
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
+    
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
     [locationManager requestWhenInUseAuthorization];
     locationManager.delegate = self;
