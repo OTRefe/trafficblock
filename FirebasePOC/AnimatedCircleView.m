@@ -102,7 +102,7 @@
     //get the rect in pixel coordination and set to the _imageView
     CGRect rect = [self rectForMapRect:mrect];
     if(_imageView){
-        _imageView.frame = rect;
+        [_imageView setFrame:rect];
     }
 }
 
