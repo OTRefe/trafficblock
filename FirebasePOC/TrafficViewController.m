@@ -177,13 +177,10 @@
 #pragma mark - Custom Methods
 
 -(void)drawOverlay{
-    //shows activity indicator
-    [self showActivityIndicator];
-    
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
     [self showActivityIndicator];
-    
+
     FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
     [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         dispatch_async(dispatch_get_main_queue(), ^{

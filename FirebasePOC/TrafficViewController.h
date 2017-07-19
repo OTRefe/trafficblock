@@ -31,7 +31,6 @@
 -(void)drawOverlay;
 -(void)locDetails:(NSString *)title :(void (^)(NSDictionary *dict, NSError *error)) completionBlock;
 -(void)addDataToFirebase:(NSString *)title;
--(void)showAlert:(NSString *)segmentTitle;
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
 
