@@ -226,31 +226,28 @@
 
 -(void)drawOverlay{
     
-    
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
+    [self showActivityIndicator];
     
-    [geoCoder reverseGeocodeLocation:userLoc
-                   completionHandler:^(NSArray *placemarks, NSError *error) {
-                       CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                       if (placemark) {
-                           if(placemark.thoroughfare){
-                               NSLog(@" PLACEMARK :  %@",placemark.thoroughfare);
-                           }
-                       }
-                   }];
-    [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+//    [geoCoder reverseGeocodeLocation:userLoc
+//                   completionHandler:^(NSArray *placemarks, NSError *error) {
+//                       CLPlacemark *placemark = [placemarks objectAtIndex:0];
+//                       if (placemark) {
+//                           if(placemark.thoroughfare){
+//                               NSLog(@" PLACEMARK :  %@",placemark.thoroughfare);
+//                           }
+//                       }
+//                   }];
+   // [[_FIRDbRef child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         //shows activity indicator
-          [self showActivityIndicator];
+          //[self showActivityIndicator];
         
-        NSDictionary *dictData = snapshot.value;
-        NSLog(@"Retrieved Dictionary Data : %@",dictData);
+//        NSDictionary *dictData = snapshot.value;
+//        NSLog(@"Retrieved Dictionary Data : %@",dictData);
         FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
         [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             
-            //removing overalys
-            [_mapView removeOverlays: [_mapView overlays]];
-            [self showActivityIndicator];
             for (FIRDataSnapshot *child in snapshot.children) {
                 double lat = [child.value[@"latitude"] doubleValue];
                 double lon = [child.value[@"longitude"] doubleValue];
@@ -286,11 +283,10 @@
                     }
                 }
             }
-
             //hides activity indicator
             [self hideActivityIndicator];
         }];
-    }];
+    //}];
 }
 
 -(void)addDataToFirebase:(NSString *)title{
