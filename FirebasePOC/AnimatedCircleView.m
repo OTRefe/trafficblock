@@ -14,14 +14,16 @@
 #define MIN_RATIO 0.8
 #define STEP_RATIO 0.05
 
-#define ANIMATION_DURATION 0.8
+#define ANIMATION_DURATION 1
 
 //repeat forever
 #define ANIMATION_REPEAT HUGE_VALF
 
+
 -(id)initWithCircle:(MKCircle *)circle{
     
     self = [super initWithCircle:circle];
+    
     if(self){
         [self start];
     }
@@ -33,13 +35,10 @@
 }
 
 -(void)start{
-    
     [self removeExistingAnimation];
     
     //create the image
-   // UIImage* img = [UIImage imageNamed:@"blue circle"];
-    UIImage* img;
-
+     UIImage* img;
     _imageView = [[UIImageView alloc] initWithImage:img];
     _imageView.frame = CGRectMake(0, 0, 0, 0);
     [self addSubview:_imageView];
@@ -51,8 +50,8 @@
     opacityAnimation.duration = ANIMATION_DURATION;
     opacityAnimation.repeatCount = ANIMATION_REPEAT;
     //theAnimation.autoreverses=YES;
-    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.5];
-    opacityAnimation.toValue = [NSNumber numberWithFloat:0.055];
+    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.2];
+    opacityAnimation.toValue = [NSNumber numberWithFloat:0.025];
     
     //resize animation setup
     CABasicAnimation *transformAnimation;
@@ -91,22 +90,25 @@
 }
 
 
-- (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)ctx{
+- (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)ctx {
+    
     //the circle center
     MKMapPoint mpoint = MKMapPointForCoordinate([[self overlay] coordinate]);
+    
     //geting the radius in map point
     double radius = [(MKCircle*)[self overlay] radius];
     double mapRadius = radius * MKMapPointsPerMeterAtLatitude([[self overlay] coordinate].latitude);
+    
     //calculate the rect in map coordination
-    MKMapRect mrect = MKMapRectMake(mpoint.x - mapRadius, mpoint.y - mapRadius, mapRadius*2, mapRadius*2);
-    //get the rect in pixel coordination and set to the _imageView
+    MKMapRect mrect = MKMapRectMake(mpoint.x - mapRadius, mpoint.y - mapRadius, mapRadius * 2, mapRadius * 2);
+    
+    //get the rect in pixel coordination and set to the imageView
     CGRect rect = [self rectForMapRect:mrect];
     dispatch_async(dispatch_get_main_queue(), ^{
         if(_imageView){
-            [_imageView setFrame:rect];
+            _imageView.frame = rect;
         }
     });
-    
 }
 
 @end
