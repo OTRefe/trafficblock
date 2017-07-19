@@ -26,6 +26,7 @@
     UIView *indicatorView;
     BOOL isKeyNull;
     __block NSDictionary *dictReturn;
+    __block FIRDataSnapshot *datasnapshot;
 }
 
 @end
@@ -37,6 +38,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    //Notification for background execution
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(pauseApp:)
+                                                 name: UIApplicationDidEnterBackgroundNotification
+                                               object: nil];
+    //Notification for foreground execution
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(playApp:)
+                                                 name: UIApplicationDidBecomeActiveNotification
+                                               object: nil];
     
     //Initialisation
     geoCoder = [[CLGeocoder alloc]init];
@@ -185,49 +196,13 @@
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
     [self showActivityIndicator];
-
+    
     FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
     [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            for (FIRDataSnapshot *child in snapshot.children) {
-                double lat = [child.value[@"latitude"] doubleValue];
-                double lon = [child.value[@"longitude"] doubleValue];
-                CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
-                int distance = [newLocation distanceFromLocation:userLoc];
-                NSLog(@"DISTANCE %d", distance);
-                if(distance >0 && distance <1000){
-                    //gets users current date
-                    NSDate *currentDate = [NSDate date];
-                    //date formatting
-                    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-                    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss +0000"];
-                    NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
-                    NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
-                    // 1800 = 30mins*60sec
-                    if (secondsBetween > 1800) {
-                        NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
-                        NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
-                        NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
-                        NSString *strDistance = [[NSString alloc]initWithFormat:@"%d",distance];
-                        
-                        NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
-                        [dictOverlayDetails setValue:strType forKey:@"type"];
-                        [dictOverlayDetails setValue:strLat forKey:@"latitude"];
-                        [dictOverlayDetails setValue:strLon forKey:@"longitude"];
-                        [dictOverlayDetails setValue:strDistance forKey:@"distance"];
-                        [dictOverlayDetails setValue:child.value[@"endLocation"] forKey:@"placemark"];
-                        [arrOverlayDetails addObject:dictOverlayDetails];
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            // adding circle overlay
-                            MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
-                            [_mapView addOverlay:circleForUserLoc];
-                        });
-                    }
-                }
-                //hides activity indicator
-                [self hideActivityIndicator];
-            }
+            datasnapshot = snapshot;
+            [self getOverlays];
+            [self hideActivityIndicator];
         });
     }];
 }
@@ -298,6 +273,55 @@
 
 -(void)hideActivityIndicator{
     [indicatorView removeFromSuperview];
+}
+
+-(void)pauseApp:(NSNotification*)theNotification{
+    [_mapView removeOverlays:_mapView.overlays];
+}
+
+-(void)playApp:(NSNotification*)theNotification{
+    [locManager startUpdatingLocation];
+    [self getOverlays];
+}
+
+-(void)getOverlays{
+    for (FIRDataSnapshot *child in datasnapshot.children) {
+        double lat = [child.value[@"latitude"] doubleValue];
+        double lon = [child.value[@"longitude"] doubleValue];
+        CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+        int distance = [newLocation distanceFromLocation:userLoc];
+        NSLog(@"DISTANCE %d", distance);
+        if(distance >0 && distance <10000){
+            //gets users current date
+            NSDate *currentDate = [NSDate date];
+            //date formatting
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss +0000"];
+            NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
+            NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
+            // 1800 = 30mins*60sec
+            if (secondsBetween > 1800) {
+                NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
+                NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
+                NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
+                NSString *strDistance = [[NSString alloc]initWithFormat:@"%d",distance];
+                
+                NSMutableDictionary *dictOverlayDetails = [[NSMutableDictionary alloc]init];
+                [dictOverlayDetails setValue:strType forKey:@"type"];
+                [dictOverlayDetails setValue:strLat forKey:@"latitude"];
+                [dictOverlayDetails setValue:strLon forKey:@"longitude"];
+                [dictOverlayDetails setValue:strDistance forKey:@"distance"];
+                [dictOverlayDetails setValue:child.value[@"endLocation"] forKey:@"placemark"];
+                [arrOverlayDetails addObject:dictOverlayDetails];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // adding circle overlay
+                    MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
+                    [_mapView addOverlay:circleForUserLoc];
+                });
+            }
+        }
+    }
 }
 
 @end

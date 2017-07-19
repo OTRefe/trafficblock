@@ -33,5 +33,6 @@
 -(void)addDataToFirebase:(NSString *)title;
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
+-(void)getOverlays;
 @end
 

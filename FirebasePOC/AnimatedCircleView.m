@@ -14,7 +14,7 @@
 #define MIN_RATIO 0.8
 #define STEP_RATIO 0.05
 
-#define ANIMATION_DURATION 1
+#define ANIMATION_DURATION 0.8
 
 //repeat forever
 #define ANIMATION_REPEAT HUGE_VALF
