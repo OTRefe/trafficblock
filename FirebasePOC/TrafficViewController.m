@@ -70,6 +70,18 @@
     [[arrSegments objectAtIndex:1] setBackgroundColor:[UIColor colorWithRed:0 green:255 blue:0 alpha:1]];
     [[arrSegments objectAtIndex:0] setBackgroundColor:[UIColor redColor]];
     
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        UIFont *font = [UIFont boldSystemFontOfSize:25.0f];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                               forKey:NSFontAttributeName];
+        [_segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    }else{
+        UIFont *font = [UIFont boldSystemFontOfSize:15.0f];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                               forKey:NSFontAttributeName];
+        [_segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    }
+    
     //Setting mapview type
     _mapView.mapType = MKMapTypeStandard;
     
@@ -79,8 +91,9 @@
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
-
+    
     self.FIRDbRef = [[FIRDatabase database] reference];
+    
     [self drawOverlay];
 }
 
