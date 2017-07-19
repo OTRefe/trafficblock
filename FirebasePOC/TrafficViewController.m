@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
     //Notification for background execution
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(pauseApp:)
@@ -106,9 +107,7 @@
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     AnimatedCircleView* circleView = [[AnimatedCircleView alloc] initWithCircle:(MKCircle *)overlay];
     
-   // MKCircleView* circleView = [[ MKCircleView alloc]initWithCircle:(MKCircle *)overlay];
     dispatch_async(dispatch_get_main_queue(), ^{
-//        circleView.alpha = 0.2;
         circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
         circleRenderer.strokeColor = [UIColor blackColor];
         circleRenderer.lineWidth = 1;
@@ -120,13 +119,10 @@
             NSString *tmplon = [[NSString alloc] initWithFormat:@"%f", [overlay coordinate].longitude];
             if(lat == tmplat && lon == tmplon){
                 if ([type isEqualToString:@"Slow Moving"]){
-                  //  circleView.fillColor = [UIColor orangeColor];
                     circleView.imageView.image = [UIImage imageNamed:@"orange circle"];
                 }else if ([type isEqualToString:@"Block"]){
-                   // circleView.fillColor = [UIColor redColor];
                     circleView.imageView.image = [UIImage imageNamed:@"red circle"];
                 }else if ([type isEqualToString:@"Free Moving"]){
-                    //circleView.fillColor = [UIColor greenColor];
                     circleView.imageView.image = [UIImage imageNamed:@"green circle"];
                 }
             }
@@ -195,6 +191,8 @@
 -(void)drawOverlay{
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
+    
+    //shows activity indicator
     [self showActivityIndicator];
     
     FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
@@ -202,6 +200,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             datasnapshot = snapshot;
             [self getOverlays];
+            
+            // hides activity indicator
             [self hideActivityIndicator];
         });
     }];
