@@ -571,60 +571,25 @@ NSComparisonResult LocationSortClosestFirst(ARGeoCoordinate *s1, ARGeoCoordinate
 
 - (void) locationUnavailable {
     NSLog(@"Location unavailable!");
-    
-    
-   /* // Find the top window (that is not an alert view or other window)
-    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
-    if (topWindow.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(topWindow in windows)
-        {
-            if (topWindow.windowLevel == UIWindowLevelNormal)
-                break;
-        }
-    }
-    
-    NSArray*arr =  [topWindow subviews]  ; //[UIApplication sharedApplication].keyWindow.subviews;
-    NSLog(@"%@",arr);
-    
-    for (UIView *view in arr) {
-        if([view isKindOfClass:[UIView class]]){
-            [view removeFromSuperview];
-            break;
-        }
-    }*/
-    
-    
     [loadingView removeFromSuperview];
-    
     id nextResponder;
-    
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
     while (topController.presentedViewController) {
         topController = topController.presentedViewController;
     }
-    
     nextResponder=topController;
-    
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         baseViewController = nextResponder;
     } else {
         NSAssert(NO, @"ARModule: Could not find a root view controller.");
     }
-    
     [self hide];
-    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
                                                     message:NSLocalizedString(@"GPS_Unavailable", @"")
                                                    delegate:nil
                                           cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                           otherButtonTitles:nil];
-    //alert.tag=1;
     [alert show];
-    
-    
 }
 
 #pragma mark - ARObjectView controller method

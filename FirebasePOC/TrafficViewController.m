@@ -12,7 +12,6 @@
     CLLocationManager *locManager;
     CLLocationCoordinate2D coordinate;
     CLLocation *userLoc;
-    CLLocation *newLocation;
     NSString* strIdentifier;
     NSString *strAnnotationTitle;
     NSString *strSegmentTitle;
@@ -21,8 +20,6 @@
     NSMutableArray *arrOverlayDetails;
     NSNumber *latitude;
     NSNumber *longitude;
-    NSInteger arrCount;
-    NSMutableArray *arrLocations;
     MKCircleRenderer *circleRenderer;
     CLGeocoder *geoCoder;
     UIActivityIndicatorView *activityIndicator;
@@ -43,7 +40,6 @@
     
     //Initialisation
     geoCoder = [[CLGeocoder alloc]init];
-    arrLocations = [[NSMutableArray alloc]init];
     arrOverlayDetails = [[NSMutableArray alloc]init];
     locManager = [[CLLocationManager alloc]init];
     
@@ -93,25 +89,28 @@
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     AnimatedCircleView* circleView = [[AnimatedCircleView alloc] initWithCircle:(MKCircle *)overlay];
-    circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
-    circleRenderer.strokeColor = [UIColor blackColor];
-    circleRenderer.lineWidth = 1;
-    for (NSDictionary *dict in arrOverlayDetails) {
-        NSString *lat = [dict valueForKey:@"latitude"];
-        NSString *lon = [dict valueForKey:@"longitude"];
-        NSString *type = [dict valueForKey:@"type"];
-        NSString *tmplat = [[NSString alloc] initWithFormat:@"%f", [overlay coordinate].latitude];
-        NSString *tmplon = [[NSString alloc] initWithFormat:@"%f", [overlay coordinate].longitude];
-        if(lat == tmplat && lon == tmplon){
-            if ([type isEqualToString:@"Slow Moving"]){
-                circleView.imageView.image = [UIImage imageNamed:@"orange circle"];
-            }else if ([type isEqualToString:@"Block"]){
-                circleView.imageView.image = [UIImage imageNamed:@"red circle"];
-            }else if ([type isEqualToString:@"Free Moving"]){
-                circleView.imageView.image = [UIImage imageNamed:@"green circle"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
+        circleRenderer.strokeColor = [UIColor blackColor];
+        circleRenderer.lineWidth = 1;
+        for (NSDictionary *dict in arrOverlayDetails) {
+            NSString *lat = [dict valueForKey:@"latitude"];
+            NSString *lon = [dict valueForKey:@"longitude"];
+            NSString *type = [dict valueForKey:@"type"];
+            NSString *tmplat = [[NSString alloc] initWithFormat:@"%f", [overlay coordinate].latitude];
+            NSString *tmplon = [[NSString alloc] initWithFormat:@"%f", [overlay coordinate].longitude];
+            if(lat == tmplat && lon == tmplon){
+                if ([type isEqualToString:@"Slow Moving"]){
+                    circleView.imageView.image = [UIImage imageNamed:@"orange circle"];
+                }else if ([type isEqualToString:@"Block"]){
+                    circleView.imageView.image = [UIImage imageNamed:@"red circle"];
+                }else if ([type isEqualToString:@"Free Moving"]){
+                    circleView.imageView.image = [UIImage imageNamed:@"green circle"];
+                }
             }
         }
-    }
+    });
+    
     return circleView ;
 }
 
@@ -172,21 +171,20 @@
 #pragma mark - Custom Methods
 
 -(void)drawOverlay{
+    //shows activity indicator
+    [self showActivityIndicator];
+    
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
     
-    //shows activity indicator
-     [self showActivityIndicator];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
-        [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-            
-            
+    FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
+    [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        dispatch_async(dispatch_get_main_queue(), ^{
             for (FIRDataSnapshot *child in snapshot.children) {
                 double lat = [child.value[@"latitude"] doubleValue];
                 double lon = [child.value[@"longitude"] doubleValue];
-                CLLocation *newLocation1 = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
-                int distance = [newLocation1 distanceFromLocation:userLoc];
+                CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+                int distance = [newLocation distanceFromLocation:userLoc];
                 NSLog(@"DISTANCE %d", distance);
                 if(distance >0 && distance <10000){
                     //gets users current date
@@ -197,7 +195,7 @@
                     NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
                     NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
                     // 1800 = 30mins*60sec
-                    if (secondsBetween < 36000) {
+                    if (secondsBetween > 1800) {
                         NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                         NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                         NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
@@ -212,19 +210,17 @@
                         [arrOverlayDetails addObject:dictOverlayDetails];
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
-                             // adding circle overlay
-                            MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation1.coordinate radius:50];
+                            // adding circle overlay
+                            MKCircle *circleForUserLoc = [MKCircle circleWithCenterCoordinate:newLocation.coordinate radius:50];
                             [_mapView addOverlay:circleForUserLoc];
                         });
-                        
                     }
                 }
+                //hides activity indicator
+                [self hideActivityIndicator];
             }
-            
-        }];
-        [self hideActivityIndicator];
-    });
-    
+        });
+    }];
 }
 
 -(void)addDataToFirebase:(NSString *)title{
@@ -262,7 +258,7 @@
 -(void)locDetails:(NSString *)title :(void (^)(NSDictionary *dict, NSError *error)) completionBlock{
     __block NSError *err;
     if(!(latitude == Nil || longitude == Nil || strIdentifier == Nil)){
-            dictReturn = [[NSDictionary alloc]init];
+        dictReturn = [[NSDictionary alloc]init];
         [geoCoder reverseGeocodeLocation:userLoc
                        completionHandler:^(NSArray *placemarks, NSError *error) {
                            CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -276,7 +272,7 @@
                            }
                        }];
         
-            }
+    }
 }
 
 -(void)showActivityIndicator{
