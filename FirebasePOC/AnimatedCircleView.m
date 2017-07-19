@@ -101,9 +101,12 @@
     MKMapRect mrect = MKMapRectMake(mpoint.x - mapRadius, mpoint.y - mapRadius, mapRadius*2, mapRadius*2);
     //get the rect in pixel coordination and set to the _imageView
     CGRect rect = [self rectForMapRect:mrect];
-    if(_imageView){
-        _imageView.frame = rect;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(_imageView){
+            [_imageView setFrame:rect];
+        }
+    });
+    
 }
 
 @end
