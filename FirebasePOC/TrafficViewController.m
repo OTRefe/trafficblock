@@ -89,7 +89,10 @@
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     AnimatedCircleView* circleView = [[AnimatedCircleView alloc] initWithCircle:(MKCircle *)overlay];
+    
+   // MKCircleView* circleView = [[ MKCircleView alloc]initWithCircle:(MKCircle *)overlay];
     dispatch_async(dispatch_get_main_queue(), ^{
+//        circleView.alpha = 0.2;
         circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
         circleRenderer.strokeColor = [UIColor blackColor];
         circleRenderer.lineWidth = 1;
@@ -101,10 +104,13 @@
             NSString *tmplon = [[NSString alloc] initWithFormat:@"%f", [overlay coordinate].longitude];
             if(lat == tmplat && lon == tmplon){
                 if ([type isEqualToString:@"Slow Moving"]){
+                  //  circleView.fillColor = [UIColor orangeColor];
                     circleView.imageView.image = [UIImage imageNamed:@"orange circle"];
                 }else if ([type isEqualToString:@"Block"]){
+                   // circleView.fillColor = [UIColor redColor];
                     circleView.imageView.image = [UIImage imageNamed:@"red circle"];
                 }else if ([type isEqualToString:@"Free Moving"]){
+                    //circleView.fillColor = [UIColor greenColor];
                     circleView.imageView.image = [UIImage imageNamed:@"green circle"];
                 }
             }
@@ -155,7 +161,6 @@
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
     [self drawOverlay];
-        
 }
 
 #pragma mark - Navigation
@@ -186,7 +191,7 @@
                 CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
                 int distance = [newLocation distanceFromLocation:userLoc];
                 NSLog(@"DISTANCE %d", distance);
-                if(distance >0 && distance <10000){
+                if(distance >0 && distance <1000){
                     //gets users current date
                     NSDate *currentDate = [NSDate date];
                     //date formatting
@@ -224,7 +229,7 @@
 }
 
 -(void)addDataToFirebase:(NSString *)title{
-    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title ,@"startLocation":[dictLocDetails valueForKey:@"StartLocation"],@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"], @"date": [dictLocDetails valueForKey:@"Date"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+    [[[_FIRDbRef child:@"users"] child:[dictLocDetails valueForKey:@"UDID"]] setValue:@{@"type": title,@"endLocation":[dictLocDetails valueForKey:@"EndLocation"], @"latitude": [dictLocDetails valueForKey:@"Latitude"], @"longitude":[dictLocDetails valueForKey:@"Longitude"], @"date": [dictLocDetails valueForKey:@"Date"]}withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         NSLog(@"FIRDatabase Reference :%@", ref);
     }];
 }
@@ -265,7 +270,7 @@
                            if(placemark) {
                                if(placemark.thoroughfare){
                                    NSLog(@" PLACEMARK :  %@",placemark.thoroughfare);
-                                   dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"StartLocation":placemark.thoroughfare,@"EndLocation":placemark.thoroughfare, @"Latitude":latitude, @"Longitude":longitude, @"Date":[NSString stringWithFormat:@"%@",[NSDate date]]};
+                                   dictReturn = @{@"UDID":strIdentifier,@"Type":title,@"EndLocation":placemark.thoroughfare, @"Latitude":latitude, @"Longitude":longitude, @"Date":[NSString stringWithFormat:@"%@",[NSDate date]]};
                                    NSLog(@"Detail Dictionary : %@",dictReturn);
                                    completionBlock(dictReturn,err);
                                }

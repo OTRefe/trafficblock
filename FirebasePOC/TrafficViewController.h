@@ -34,6 +34,5 @@
 -(void)showAlert:(NSString *)segmentTitle;
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
-
 @end
 
