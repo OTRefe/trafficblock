@@ -105,13 +105,12 @@
 #pragma  mark - Mapview delegate methods
 
 -(nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-    //Adding custom pin for annotation
     static NSString *cellIdent = @"Cell";
     MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:cellIdent];
     if(view == nil){
         view = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:cellIdent];
     }
-
+    //Customizing user location annotation pin
     view.image = [UIImage imageNamed:@"blue pin"];
     view.annotation = annotation;
     return view;
@@ -141,14 +140,12 @@
             }
         }
     });
-    
     return circleView ;
 }
 
 #pragma  mark - Core location delegate methods
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
-    
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
     for (id annotation in _mapView.annotations){
@@ -313,7 +310,7 @@
             NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
             NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
             // 1800 = 30mins*60sec
-            if (secondsBetween > 1800) {
+            if (secondsBetween < 1800) {
                 NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                 NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                 NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
