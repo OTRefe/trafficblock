@@ -72,6 +72,6 @@
     </scenes>
     <resources>
         <image name="label image" width="416" height="98"/>
-        <image name="splash screen" width="595" height="841"/>
+        <image name="splash screen" width="297" height="420"/>
     </resources>
 </document>
