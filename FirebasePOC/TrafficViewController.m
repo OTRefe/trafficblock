@@ -90,11 +90,11 @@
     
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
-   // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
+    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
     
     self.FIRDbRef = [[FIRDatabase database] reference];
     
-    [self drawOverlay];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,6 +157,13 @@
     mapRegion.span.longitudeDelta = 0.01;
     [_mapView setRegion:MKCoordinateRegionMake(newLoc.coordinate, MKCoordinateSpanMake(0.01, 0.01)) animated:NO]; //setting mapview region as userlocation region
     userLoc = [[CLLocation alloc]initWithLatitude:newLoc.coordinate.latitude longitude:newLoc.coordinate.longitude];
+    NSNumber *userlat = [NSNumber numberWithDouble:userLoc.coordinate.latitude];
+    NSNumber *userlon = [NSNumber numberWithDouble:userLoc.coordinate.longitude];
+    NSDictionary *userLocation=@{@"userlat":userlat,@"userlon":userlon};
+    
+    [[NSUserDefaults standardUserDefaults] setObject:userLocation forKey:@"userLocation"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self drawOverlay:userLoc];
 }
 
 #pragma mark - IB Action
@@ -182,7 +189,8 @@
 
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
-    [self drawOverlay];
+    CLLocation *currentLoc = [self RetrieveLocFromUserDefaults];
+    [self drawOverlay:currentLoc];
 }
 
 #pragma mark - Navigation
@@ -198,21 +206,22 @@
 
 #pragma mark - Custom Methods
 
--(void)drawOverlay{
+-(void)drawOverlay:(CLLocation *)loc{
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
     
-    //shows activity indicator
-    [self showActivityIndicator];
+    /* //shows activity indicator
+     [self showActivityIndicator];*/
     
     FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
     [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         dispatch_async(dispatch_get_main_queue(), ^{
             datasnapshot = snapshot;
-            [self getOverlays];
             
-            // hides activity indicator
-            [self hideActivityIndicator];
+            [self getOverlays:loc];
+            
+            /*// hides activity indicator
+             [self hideActivityIndicator];*/
         });
     }];
 }
@@ -240,7 +249,8 @@
             if(!isKeyNull){
                 [self addDataToFirebase:segmentTitle];
             }
-            [self drawOverlay];
+            CLLocation *currentLoc = [self RetrieveLocFromUserDefaults];
+            [self drawOverlay:currentLoc];
         }];
     }];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
@@ -291,17 +301,19 @@
 
 -(void)playApp:(NSNotification*)theNotification{
     [locManager startUpdatingLocation];
-    [self getOverlays];
+    NSDictionary *userLocdict=[[NSUserDefaults standardUserDefaults] objectForKey:@"userLocation"];
+    CLLocation *tempLoc = [[CLLocation alloc]initWithLatitude:[[userLocdict objectForKey:@"uselat"]doubleValue] longitude:[[userLocdict objectForKey:@"userlon"]doubleValue]];
+    [self getOverlays:tempLoc];
 }
 
--(void)getOverlays{
+-(void)getOverlays:(CLLocation *)location{
     for (FIRDataSnapshot *child in datasnapshot.children) {
         double lat = [child.value[@"latitude"] doubleValue];
         double lon = [child.value[@"longitude"] doubleValue];
         CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
-        int distance = [newLocation distanceFromLocation:userLoc];
+        int distance = [newLocation distanceFromLocation:location];
         NSLog(@"DISTANCE %d", distance);
-        if(distance >0 && distance <10000){
+        if(distance >100 && distance <10000){
             //gets users current date
             NSDate *currentDate = [NSDate date];
             //date formatting
@@ -334,4 +346,9 @@
     }
 }
 
+-(CLLocation *)RetrieveLocFromUserDefaults{
+    NSDictionary *userLocdict=[[NSUserDefaults standardUserDefaults] objectForKey:@"userLocation"];
+    CLLocation *tempLoc = [[CLLocation alloc]initWithLatitude:[[userLocdict objectForKey:@"uselat"]doubleValue] longitude:[[userLocdict objectForKey:@"userlon"]doubleValue]];
+    return tempLoc;
+}
 @end

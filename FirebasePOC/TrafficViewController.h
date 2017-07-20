@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) FIRDatabaseReference *FIRDbRef;
 
+@property (nonatomic, strong) CLLocation* currentLocation;
+
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) IBOutlet UIButton *btnStreetView;
@@ -32,6 +34,9 @@
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
 -(void)getOverlays;
+-(void)playApp:(NSNotification*)theNotification;
+-(void)pauseApp:(NSNotification*)theNotification;
+-(CLLocation *)RetrieveLocFromUserDefaults;
 
 @end
 
