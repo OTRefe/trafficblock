@@ -34,5 +34,9 @@
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
 -(void)getOverlays;
+-(void)playApp:(NSNotification*)theNotification;
+-(void)pauseApp:(NSNotification*)theNotification;
+-(CLLocation *)RetrieveLocFromUserDefaults;
+
 @end
 
