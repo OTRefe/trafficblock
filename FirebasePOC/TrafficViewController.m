@@ -90,11 +90,8 @@
     
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
-    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
     
     self.FIRDbRef = [[FIRDatabase database] reference];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -161,6 +158,7 @@
     NSNumber *userlon = [NSNumber numberWithDouble:userLoc.coordinate.longitude];
     NSDictionary *userLocation=@{@"userlat":userlat,@"userlon":userlon};
     
+    //saving user location into NSUserDefaults
     [[NSUserDefaults standardUserDefaults] setObject:userLocation forKey:@"userLocation"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self drawOverlay:userLoc];
@@ -189,8 +187,7 @@
 
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
-    CLLocation *currentLoc = [self RetrieveLocFromUserDefaults];
-    [self drawOverlay:currentLoc];
+    [self drawOverlay:[self RetrieveLocFromUserDefaults]];
 }
 
 #pragma mark - Navigation
@@ -249,8 +246,7 @@
             if(!isKeyNull){
                 [self addDataToFirebase:segmentTitle];
             }
-            CLLocation *currentLoc = [self RetrieveLocFromUserDefaults];
-            [self drawOverlay:currentLoc];
+            [self drawOverlay:[self RetrieveLocFromUserDefaults]];
         }];
     }];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
@@ -322,7 +318,7 @@
             NSDate *date = [dateFormatter dateFromString:child.value[@"date"]];
             NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:date];
             // 1800 = 30mins*60sec
-            if (secondsBetween < 1800) {
+            if (secondsBetween > 1800) {
                 NSString *strType = [[NSString alloc] initWithFormat:@"%@", child.value[@"type"]];
                 NSString *strLat = [[NSString alloc] initWithFormat:@"%f", lat];
                 NSString *strLon = [[NSString alloc] initWithFormat:@"%f", lon];
@@ -351,4 +347,5 @@
     CLLocation *tempLoc = [[CLLocation alloc]initWithLatitude:[[userLocdict objectForKey:@"uselat"]doubleValue] longitude:[[userLocdict objectForKey:@"userlon"]doubleValue]];
     return tempLoc;
 }
+
 @end

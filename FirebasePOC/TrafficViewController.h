@@ -16,8 +16,6 @@
 
 @property (strong, nonatomic) FIRDatabaseReference *FIRDbRef;
 
-@property (nonatomic, strong) CLLocation* currentLocation;
-
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) IBOutlet UIButton *btnStreetView;
@@ -28,12 +26,12 @@
 - (IBAction)btnStreetViewClicked:(id)sender;
 - (IBAction)btnRefreshClicked:(id)sender;
 
--(void)drawOverlay;
+-(void)drawOverlay:(CLLocation *)loc;
 -(void)locDetails:(NSString *)title :(void (^)(NSDictionary *dict, NSError *error)) completionBlock;
 -(void)addDataToFirebase:(NSString *)title;
 -(void)showActivityIndicator;
 -(void)hideActivityIndicator;
--(void)getOverlays;
+-(void)getOverlays:(CLLocation *)location;
 -(void)playApp:(NSNotification*)theNotification;
 -(void)pauseApp:(NSNotification*)theNotification;
 -(CLLocation *)RetrieveLocFromUserDefaults;
