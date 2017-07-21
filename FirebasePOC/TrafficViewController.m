@@ -90,11 +90,7 @@
     
     self.FIRDbRef = [[FIRDatabase database] reference];
     _mapView.showsUserLocation = YES;
-    // [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
-    
     self.FIRDbRef = [[FIRDatabase database] reference];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -141,7 +137,6 @@
             }
         }
     });
-    
     return circleView ;
 }
 
@@ -192,8 +187,7 @@
 
 - (IBAction)btnRefreshClicked:(id)sender {
     [locManager startUpdatingLocation];
-    CLLocation *currentLoc = [self RetrieveLocFromUserDefaults];
-    [self drawOverlay:currentLoc];
+    [self drawOverlay:[self RetrieveLocFromUserDefaults]];
 }
 
 #pragma mark - Navigation
@@ -212,19 +206,11 @@
 -(void)drawOverlay:(CLLocation *)loc{
     //removing overalys
     [_mapView removeOverlays: [_mapView overlays]];
-    
-    /* //shows activity indicator
-     [self showActivityIndicator];*/
-    
     FIRDatabaseQuery *query = [_FIRDbRef child:@"users"];
     [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         dispatch_async(dispatch_get_main_queue(), ^{
             datasnapshot = snapshot;
-            
             [self getOverlays:loc];
-            
-            /*// hides activity indicator
-             [self hideActivityIndicator];*/
         });
     }];
 }
@@ -252,8 +238,7 @@
             if(!isKeyNull){
                 [self addDataToFirebase:segmentTitle];
             }
-            CLLocation *currentLoc = [self RetrieveLocFromUserDefaults];
-            [self drawOverlay:currentLoc];
+            [self drawOverlay:[self RetrieveLocFromUserDefaults]];
         }];
     }];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:Nil];
@@ -278,7 +263,6 @@
                                }
                            }
                        }];
-        
     }
 }
 
