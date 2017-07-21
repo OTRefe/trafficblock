@@ -101,13 +101,12 @@
 #pragma  mark - Mapview delegate methods
 
 -(nullable MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-    //Adding custom pin for annotation
     static NSString *cellIdent = @"Cell";
     MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:cellIdent];
     if(view == nil){
         view = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:cellIdent];
     }
-    
+    //Customizing user location annotation pin
     view.image = [UIImage imageNamed:@"blue pin"];
     view.annotation = annotation;
     return view;
@@ -143,7 +142,6 @@
 #pragma  mark - Core location delegate methods
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLoc fromLocation:(CLLocation *)oldLocation{
-    
     latitude = [NSNumber numberWithDouble:newLoc.coordinate.latitude];//userlocation latitude
     longitude = [NSNumber numberWithDouble:newLoc.coordinate.longitude];//userlocation longtitude
     for (id annotation in _mapView.annotations){
@@ -159,6 +157,7 @@
     NSNumber *userlon = [NSNumber numberWithDouble:userLoc.coordinate.longitude];
     NSDictionary *userLocation=@{@"userlat":userlat,@"userlon":userlon};
     
+    //saving user location into NSUserDefaults
     [[NSUserDefaults standardUserDefaults] setObject:userLocation forKey:@"userLocation"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self drawOverlay:userLoc];
@@ -338,4 +337,5 @@
     CLLocation *tempLoc = [[CLLocation alloc]initWithLatitude:[[userLocdict objectForKey:@"uselat"]doubleValue] longitude:[[userLocdict objectForKey:@"userlon"]doubleValue]];
     return tempLoc;
 }
+
 @end
