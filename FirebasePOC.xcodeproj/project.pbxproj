@@ -8,16 +8,53 @@
 
 /* Begin PBXBuildFile section */
 		5AFA0994012D6A66993B0C42 /* libPods-FirebasePOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 679F21D47922F11BD08B6FCC /* libPods-FirebasePOC.a */; };
-		B76FE3181F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B76FE3161F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx */; };
 		B76FE31B1F0CE6D00048EC5B /* trivandrum-kasargod.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B76FE31A1F0CE6D00048EC5B /* trivandrum-kasargod.gpx */; };
+		B7737AB11F14E39C005AAFBD /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = B7737A781F14E39C005AAFBD /* Contents.json */; };
+		B7737AB21F14E39C005AAFBD /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A791F14E39C005AAFBD /* Icon-App-20x20@1x.png */; };
+		B7737AB31F14E39C005AAFBD /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A7A1F14E39C005AAFBD /* Icon-App-20x20@2x.png */; };
+		B7737AB41F14E39C005AAFBD /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A7B1F14E39C005AAFBD /* Icon-App-20x20@3x.png */; };
+		B7737AB51F14E39C005AAFBD /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A7C1F14E39C005AAFBD /* Icon-App-29x29@1x.png */; };
+		B7737AB61F14E39C005AAFBD /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A7D1F14E39C005AAFBD /* Icon-App-29x29@2x.png */; };
+		B7737AB71F14E39C005AAFBD /* Icon-App-29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A7E1F14E39C005AAFBD /* Icon-App-29x29@3x.png */; };
+		B7737AB81F14E39C005AAFBD /* Icon-App-40x40@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A7F1F14E39C005AAFBD /* Icon-App-40x40@1x.png */; };
+		B7737AB91F14E39C005AAFBD /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A801F14E39C005AAFBD /* Icon-App-40x40@2x.png */; };
+		B7737ABA1F14E39C005AAFBD /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A811F14E39C005AAFBD /* Icon-App-40x40@3x.png */; };
+		B7737ABB1F14E39C005AAFBD /* Icon-App-57x57@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A821F14E39C005AAFBD /* Icon-App-57x57@1x.png */; };
+		B7737ABC1F14E39C005AAFBD /* Icon-App-57x57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A831F14E39C005AAFBD /* Icon-App-57x57@2x.png */; };
+		B7737ABD1F14E39C005AAFBD /* Icon-App-60x60@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A841F14E39C005AAFBD /* Icon-App-60x60@1x.png */; };
+		B7737ABE1F14E39C005AAFBD /* Icon-App-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A851F14E39C005AAFBD /* Icon-App-60x60@2x.png */; };
+		B7737ABF1F14E39C005AAFBD /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A861F14E39C005AAFBD /* Icon-App-60x60@3x.png */; };
+		B7737AC01F14E39C005AAFBD /* Icon-App-72x72@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A871F14E39C005AAFBD /* Icon-App-72x72@1x.png */; };
+		B7737AC11F14E39C005AAFBD /* Icon-App-72x72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A881F14E39C005AAFBD /* Icon-App-72x72@2x.png */; };
+		B7737AC21F14E39C005AAFBD /* Icon-App-76x76@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A891F14E39C005AAFBD /* Icon-App-76x76@1x.png */; };
+		B7737AC31F14E39C005AAFBD /* Icon-App-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A8A1F14E39C005AAFBD /* Icon-App-76x76@2x.png */; };
+		B7737AC41F14E39C005AAFBD /* Icon-App-76x76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A8B1F14E39C005AAFBD /* Icon-App-76x76@3x.png */; };
+		B7737AC51F14E39C005AAFBD /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A8C1F14E39C005AAFBD /* Icon-App-83.5x83.5@2x.png */; };
+		B7737AC61F14E39C005AAFBD /* Icon-Small-50x50@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A8D1F14E39C005AAFBD /* Icon-Small-50x50@1x.png */; };
+		B7737AC71F14E39C005AAFBD /* Icon-Small-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A8E1F14E39C005AAFBD /* Icon-Small-50x50@2x.png */; };
+		B7737AC81F14E39C005AAFBD /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A8F1F14E39C005AAFBD /* iTunesArtwork@1x.png */; };
+		B7737AC91F14E39C005AAFBD /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A901F14E39C005AAFBD /* iTunesArtwork@2x.png */; };
+		B7737ACA1F14E39C005AAFBD /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7737A911F14E39C005AAFBD /* iTunesArtwork@3x.png */; };
+		B7737ACB1F14E39C005AAFBD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B7737A921F14E39C005AAFBD /* README.md */; };
+		B7737AD61F14ED73005AAFBD /* FromAngamaliToKoratty.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */; };
 		B774458E1F0B606000829E7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B774458D1F0B606000829E7E /* MapKit.framework */; };
+		B782CEFF1F15DDAA00CD5E4C /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CEFD1F15DDAA00CD5E4C /* DetailView.m */; };
+		B782CF001F15DDAA00CD5E4C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */; };
+		B782CF101F15E46C00CD5E4C /* ARGeoCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF021F15E46C00CD5E4C /* ARGeoCoordinate.m */; };
+		B782CF111F15E46C00CD5E4C /* ARKitConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF051F15E46C00CD5E4C /* ARKitConfig.m */; };
+		B782CF121F15E46C00CD5E4C /* ARKitEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF071F15E46C00CD5E4C /* ARKitEngine.m */; };
+		B782CF131F15E46C00CD5E4C /* ARObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF091F15E46C00CD5E4C /* ARObjectView.m */; };
+		B782CF141F15E46C00CD5E4C /* LocalizationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF0D1F15E46C00CD5E4C /* LocalizationHelper.m */; };
+		B782CF151F15E46C00CD5E4C /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF0F1F15E46C00CD5E4C /* RadarView.m */; };
+		B782CF171F1612B500CD5E4C /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B782CF161F1612B500CD5E4C /* ARViewController.m */; };
 		B793072B1F0A1E7D006B8FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072A1F0A1E7D006B8FD5 /* main.m */; };
 		B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */; };
-		B79307311F0A1E7D006B8FD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79307301F0A1E7D006B8FD5 /* ViewController.m */; };
+		B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */; };
 		B79307341F0A1E7D006B8FD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307321F0A1E7D006B8FD5 /* Main.storyboard */; };
 		B79307361F0A1E7D006B8FD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B79307351F0A1E7D006B8FD5 /* Assets.xcassets */; };
 		B79307391F0A1E7D006B8FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */; };
 		B79554521F0E40B200914820 /* AreaDUM_location_barcelona.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */; };
+		B7B9E35E1F13645F0075861B /* AnimatedCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */; };
 		B7CA96F01F0A3B1000360AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -25,20 +62,69 @@
 		0FF045B4000DA13A555F0F37 /* Pods-FirebasePOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebasePOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebasePOC/Pods-FirebasePOC.release.xcconfig"; sourceTree = "<group>"; };
 		2B6D5AB1E24E4F103E4E1534 /* Pods-FirebasePOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebasePOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebasePOC/Pods-FirebasePOC.debug.xcconfig"; sourceTree = "<group>"; };
 		679F21D47922F11BD08B6FCC /* libPods-FirebasePOC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirebasePOC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B76FE3161F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AreaDUM_location_barcelona.gpx; path = ../../../../Downloads/Task7_MapviewUsingArray/Task_7_MapKitUserLocation/AreaDUM_location_barcelona.gpx; sourceTree = "<group>"; };
 		B76FE31A1F0CE6D00048EC5B /* trivandrum-kasargod.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "trivandrum-kasargod.gpx"; sourceTree = "<group>"; };
+		B7737A781F14E39C005AAFBD /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		B7737A791F14E39C005AAFBD /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
+		B7737A7A1F14E39C005AAFBD /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
+		B7737A7B1F14E39C005AAFBD /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
+		B7737A7C1F14E39C005AAFBD /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
+		B7737A7D1F14E39C005AAFBD /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
+		B7737A7E1F14E39C005AAFBD /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
+		B7737A7F1F14E39C005AAFBD /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
+		B7737A801F14E39C005AAFBD /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		B7737A811F14E39C005AAFBD /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
+		B7737A821F14E39C005AAFBD /* Icon-App-57x57@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-57x57@1x.png"; sourceTree = "<group>"; };
+		B7737A831F14E39C005AAFBD /* Icon-App-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-57x57@2x.png"; sourceTree = "<group>"; };
+		B7737A841F14E39C005AAFBD /* Icon-App-60x60@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@1x.png"; sourceTree = "<group>"; };
+		B7737A851F14E39C005AAFBD /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
+		B7737A861F14E39C005AAFBD /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
+		B7737A871F14E39C005AAFBD /* Icon-App-72x72@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-72x72@1x.png"; sourceTree = "<group>"; };
+		B7737A881F14E39C005AAFBD /* Icon-App-72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-72x72@2x.png"; sourceTree = "<group>"; };
+		B7737A891F14E39C005AAFBD /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
+		B7737A8A1F14E39C005AAFBD /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
+		B7737A8B1F14E39C005AAFBD /* Icon-App-76x76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@3x.png"; sourceTree = "<group>"; };
+		B7737A8C1F14E39C005AAFBD /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
+		B7737A8D1F14E39C005AAFBD /* Icon-Small-50x50@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@1x.png"; sourceTree = "<group>"; };
+		B7737A8E1F14E39C005AAFBD /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
+		B7737A8F1F14E39C005AAFBD /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@1x.png"; sourceTree = "<group>"; };
+		B7737A901F14E39C005AAFBD /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		B7737A911F14E39C005AAFBD /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@3x.png"; sourceTree = "<group>"; };
+		B7737A921F14E39C005AAFBD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FromAngamaliToKoratty.gpx; sourceTree = "<group>"; };
+		B7737ADA1F150214005AAFBD /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
 		B774458D1F0B606000829E7E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B782CEFC1F15DDAA00CD5E4C /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailView.h; path = ../DetailView.h; sourceTree = "<group>"; };
+		B782CEFD1F15DDAA00CD5E4C /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailView.m; path = ../DetailView.m; sourceTree = "<group>"; };
+		B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailView.xib; path = ../DetailView.xib; sourceTree = "<group>"; };
+		B782CF011F15E46C00CD5E4C /* ARGeoCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGeoCoordinate.h; sourceTree = "<group>"; };
+		B782CF021F15E46C00CD5E4C /* ARGeoCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGeoCoordinate.m; sourceTree = "<group>"; };
+		B782CF031F15E46C00CD5E4C /* ARKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKit.h; sourceTree = "<group>"; };
+		B782CF041F15E46C00CD5E4C /* ARKitConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKitConfig.h; sourceTree = "<group>"; };
+		B782CF051F15E46C00CD5E4C /* ARKitConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKitConfig.m; sourceTree = "<group>"; };
+		B782CF061F15E46C00CD5E4C /* ARKitEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKitEngine.h; sourceTree = "<group>"; };
+		B782CF071F15E46C00CD5E4C /* ARKitEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKitEngine.m; sourceTree = "<group>"; };
+		B782CF081F15E46C00CD5E4C /* ARObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARObjectView.h; sourceTree = "<group>"; };
+		B782CF091F15E46C00CD5E4C /* ARObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARObjectView.m; sourceTree = "<group>"; };
+		B782CF0A1F15E46C00CD5E4C /* ARViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewDelegate.h; sourceTree = "<group>"; };
+		B782CF0B1F15E46C00CD5E4C /* LocalizationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationDelegate.h; sourceTree = "<group>"; };
+		B782CF0C1F15E46C00CD5E4C /* LocalizationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationHelper.h; sourceTree = "<group>"; };
+		B782CF0D1F15E46C00CD5E4C /* LocalizationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationHelper.m; sourceTree = "<group>"; };
+		B782CF0E1F15E46C00CD5E4C /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
+		B782CF0F1F15E46C00CD5E4C /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
+		B782CF161F1612B500CD5E4C /* ARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		B79307261F0A1E7D006B8FD5 /* FirebasePOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B793072A1F0A1E7D006B8FD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B793072F1F0A1E7D006B8FD5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B79307301F0A1E7D006B8FD5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B793072F1F0A1E7D006B8FD5 /* TrafficViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrafficViewController.h; sourceTree = "<group>"; };
+		B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrafficViewController.m; sourceTree = "<group>"; };
 		B79307331F0A1E7D006B8FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B79307351F0A1E7D006B8FD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B79307381F0A1E7D006B8FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B793073A1F0A1E7D006B8FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AreaDUM_location_barcelona.gpx; sourceTree = "<group>"; };
+		B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedCircleView.h; sourceTree = "<group>"; };
+		B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedCircleView.m; sourceTree = "<group>"; };
 		B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,9 +150,82 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B7737A5A1F14E39C005AAFBD /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				B7737A761F14E39C005AAFBD /* ios */,
+			);
+			path = AppIcon;
+			sourceTree = "<group>";
+		};
+		B7737A761F14E39C005AAFBD /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				B7737A771F14E39C005AAFBD /* AppIcon.appiconset */,
+				B7737A8F1F14E39C005AAFBD /* iTunesArtwork@1x.png */,
+				B7737A901F14E39C005AAFBD /* iTunesArtwork@2x.png */,
+				B7737A911F14E39C005AAFBD /* iTunesArtwork@3x.png */,
+				B7737A921F14E39C005AAFBD /* README.md */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		B7737A771F14E39C005AAFBD /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+				B7737A781F14E39C005AAFBD /* Contents.json */,
+				B7737A791F14E39C005AAFBD /* Icon-App-20x20@1x.png */,
+				B7737A7A1F14E39C005AAFBD /* Icon-App-20x20@2x.png */,
+				B7737A7B1F14E39C005AAFBD /* Icon-App-20x20@3x.png */,
+				B7737A7C1F14E39C005AAFBD /* Icon-App-29x29@1x.png */,
+				B7737A7D1F14E39C005AAFBD /* Icon-App-29x29@2x.png */,
+				B7737A7E1F14E39C005AAFBD /* Icon-App-29x29@3x.png */,
+				B7737A7F1F14E39C005AAFBD /* Icon-App-40x40@1x.png */,
+				B7737A801F14E39C005AAFBD /* Icon-App-40x40@2x.png */,
+				B7737A811F14E39C005AAFBD /* Icon-App-40x40@3x.png */,
+				B7737A821F14E39C005AAFBD /* Icon-App-57x57@1x.png */,
+				B7737A831F14E39C005AAFBD /* Icon-App-57x57@2x.png */,
+				B7737A841F14E39C005AAFBD /* Icon-App-60x60@1x.png */,
+				B7737A851F14E39C005AAFBD /* Icon-App-60x60@2x.png */,
+				B7737A861F14E39C005AAFBD /* Icon-App-60x60@3x.png */,
+				B7737A871F14E39C005AAFBD /* Icon-App-72x72@1x.png */,
+				B7737A881F14E39C005AAFBD /* Icon-App-72x72@2x.png */,
+				B7737A891F14E39C005AAFBD /* Icon-App-76x76@1x.png */,
+				B7737A8A1F14E39C005AAFBD /* Icon-App-76x76@2x.png */,
+				B7737A8B1F14E39C005AAFBD /* Icon-App-76x76@3x.png */,
+				B7737A8C1F14E39C005AAFBD /* Icon-App-83.5x83.5@2x.png */,
+				B7737A8D1F14E39C005AAFBD /* Icon-Small-50x50@1x.png */,
+				B7737A8E1F14E39C005AAFBD /* Icon-Small-50x50@2x.png */,
+			);
+			path = AppIcon.appiconset;
+			sourceTree = "<group>";
+		};
+		B782CEE61F15DC4300CD5E4C /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				B782CF011F15E46C00CD5E4C /* ARGeoCoordinate.h */,
+				B782CF021F15E46C00CD5E4C /* ARGeoCoordinate.m */,
+				B782CF031F15E46C00CD5E4C /* ARKit.h */,
+				B782CF041F15E46C00CD5E4C /* ARKitConfig.h */,
+				B782CF051F15E46C00CD5E4C /* ARKitConfig.m */,
+				B782CF061F15E46C00CD5E4C /* ARKitEngine.h */,
+				B782CF071F15E46C00CD5E4C /* ARKitEngine.m */,
+				B782CF081F15E46C00CD5E4C /* ARObjectView.h */,
+				B782CF091F15E46C00CD5E4C /* ARObjectView.m */,
+				B782CF0A1F15E46C00CD5E4C /* ARViewDelegate.h */,
+				B782CF0B1F15E46C00CD5E4C /* LocalizationDelegate.h */,
+				B782CF0C1F15E46C00CD5E4C /* LocalizationHelper.h */,
+				B782CF0D1F15E46C00CD5E4C /* LocalizationHelper.m */,
+				B782CF0E1F15E46C00CD5E4C /* RadarView.h */,
+				B782CF0F1F15E46C00CD5E4C /* RadarView.m */,
+			);
+			name = ARKit;
+			sourceTree = "<group>";
+		};
 		B793071D1F0A1E7C006B8FD5 = {
 			isa = PBXGroup;
 			children = (
+				B782CEE61F15DC4300CD5E4C /* ARKit */,
 				B79307281F0A1E7D006B8FD5 /* FirebasePOC */,
 				B79307271F0A1E7D006B8FD5 /* Products */,
 				C33AACD6AD332FA9CDF384FB /* Pods */,
@@ -85,12 +244,11 @@
 		B79307281F0A1E7D006B8FD5 /* FirebasePOC */ = {
 			isa = PBXGroup;
 			children = (
-				B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */,
 				B7CA96EF1F0A3B1000360AC3 /* GoogleService-Info.plist */,
 				B793072C1F0A1E7D006B8FD5 /* AppDelegate.h */,
 				B793072D1F0A1E7D006B8FD5 /* AppDelegate.m */,
-				B793072F1F0A1E7D006B8FD5 /* ViewController.h */,
-				B79307301F0A1E7D006B8FD5 /* ViewController.m */,
+				B7B9E3601F138E3E0075861B /* Custom Class */,
+				B7B9E35F1F138E310075861B /* View Controller */,
 				B79307321F0A1E7D006B8FD5 /* Main.storyboard */,
 				B79307351F0A1E7D006B8FD5 /* Assets.xcassets */,
 				B79307371F0A1E7D006B8FD5 /* LaunchScreen.storyboard */,
@@ -102,12 +260,37 @@
 		B79307291F0A1E7D006B8FD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B7737A5A1F14E39C005AAFBD /* AppIcon */,
 				B793073A1F0A1E7D006B8FD5 /* Info.plist */,
 				B76FE31A1F0CE6D00048EC5B /* trivandrum-kasargod.gpx */,
-				B76FE3161F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx */,
+				B7737AD51F14ED73005AAFBD /* FromAngamaliToKoratty.gpx */,
+				B79554511F0E40B200914820 /* AreaDUM_location_barcelona.gpx */,
 				B793072A1F0A1E7D006B8FD5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7B9E35F1F138E310075861B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B7737ADA1F150214005AAFBD /* ARViewController.h */,
+				B782CF161F1612B500CD5E4C /* ARViewController.m */,
+				B793072F1F0A1E7D006B8FD5 /* TrafficViewController.h */,
+				B79307301F0A1E7D006B8FD5 /* TrafficViewController.m */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		B7B9E3601F138E3E0075861B /* Custom Class */ = {
+			isa = PBXGroup;
+			children = (
+				B7B9E35C1F13645F0075861B /* AnimatedCircleView.h */,
+				B7B9E35D1F13645F0075861B /* AnimatedCircleView.m */,
+				B782CEFC1F15DDAA00CD5E4C /* DetailView.h */,
+				B782CEFD1F15DDAA00CD5E4C /* DetailView.m */,
+				B782CEFE1F15DDAA00CD5E4C /* DetailView.xib */,
+			);
+			name = "Custom Class";
 			sourceTree = "<group>";
 		};
 		C33AACD6AD332FA9CDF384FB /* Pods */ = {
@@ -148,7 +331,7 @@
 		B793071E1F0A1E7C006B8FD5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "MACMINI 2";
 				TargetAttributes = {
 					B79307251F0A1E7D006B8FD5 = {
@@ -180,12 +363,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7737AC51F14E39C005AAFBD /* Icon-App-83.5x83.5@2x.png in Resources */,
+				B7737AC71F14E39C005AAFBD /* Icon-Small-50x50@2x.png in Resources */,
+				B7737ACA1F14E39C005AAFBD /* iTunesArtwork@3x.png in Resources */,
+				B7737AC41F14E39C005AAFBD /* Icon-App-76x76@3x.png in Resources */,
+				B7737AD61F14ED73005AAFBD /* FromAngamaliToKoratty.gpx in Resources */,
 				B79307391F0A1E7D006B8FD5 /* LaunchScreen.storyboard in Resources */,
+				B7737AB71F14E39C005AAFBD /* Icon-App-29x29@3x.png in Resources */,
+				B7737AB51F14E39C005AAFBD /* Icon-App-29x29@1x.png in Resources */,
+				B7737AC91F14E39C005AAFBD /* iTunesArtwork@2x.png in Resources */,
 				B79307361F0A1E7D006B8FD5 /* Assets.xcassets in Resources */,
+				B7737AC01F14E39C005AAFBD /* Icon-App-72x72@1x.png in Resources */,
+				B7737AB11F14E39C005AAFBD /* Contents.json in Resources */,
 				B76FE31B1F0CE6D00048EC5B /* trivandrum-kasargod.gpx in Resources */,
-				B76FE3181F0CAAB20048EC5B /* AreaDUM_location_barcelona.gpx in Resources */,
+				B7737ABF1F14E39C005AAFBD /* Icon-App-60x60@3x.png in Resources */,
 				B7CA96F01F0A3B1000360AC3 /* GoogleService-Info.plist in Resources */,
+				B7737AC81F14E39C005AAFBD /* iTunesArtwork@1x.png in Resources */,
 				B79554521F0E40B200914820 /* AreaDUM_location_barcelona.gpx in Resources */,
+				B7737AC31F14E39C005AAFBD /* Icon-App-76x76@2x.png in Resources */,
+				B7737ABE1F14E39C005AAFBD /* Icon-App-60x60@2x.png in Resources */,
+				B7737ABC1F14E39C005AAFBD /* Icon-App-57x57@2x.png in Resources */,
+				B7737AB41F14E39C005AAFBD /* Icon-App-20x20@3x.png in Resources */,
+				B7737AC61F14E39C005AAFBD /* Icon-Small-50x50@1x.png in Resources */,
+				B7737ABA1F14E39C005AAFBD /* Icon-App-40x40@3x.png in Resources */,
+				B7737ABD1F14E39C005AAFBD /* Icon-App-60x60@1x.png in Resources */,
+				B782CF001F15DDAA00CD5E4C /* DetailView.xib in Resources */,
+				B7737AB31F14E39C005AAFBD /* Icon-App-20x20@2x.png in Resources */,
+				B7737AB91F14E39C005AAFBD /* Icon-App-40x40@2x.png in Resources */,
+				B7737AC11F14E39C005AAFBD /* Icon-App-72x72@2x.png in Resources */,
+				B7737ABB1F14E39C005AAFBD /* Icon-App-57x57@1x.png in Resources */,
+				B7737AB81F14E39C005AAFBD /* Icon-App-40x40@1x.png in Resources */,
+				B7737AC21F14E39C005AAFBD /* Icon-App-76x76@1x.png in Resources */,
+				B7737AB61F14E39C005AAFBD /* Icon-App-29x29@2x.png in Resources */,
+				B7737AB21F14E39C005AAFBD /* Icon-App-20x20@1x.png in Resources */,
 				B79307341F0A1E7D006B8FD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,9 +455,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79307311F0A1E7D006B8FD5 /* ViewController.m in Sources */,
+				B79307311F0A1E7D006B8FD5 /* TrafficViewController.m in Sources */,
+				B782CF101F15E46C00CD5E4C /* ARGeoCoordinate.m in Sources */,
+				B782CF171F1612B500CD5E4C /* ARViewController.m in Sources */,
+				B782CF131F15E46C00CD5E4C /* ARObjectView.m in Sources */,
+				B782CF141F15E46C00CD5E4C /* LocalizationHelper.m in Sources */,
 				B793072E1F0A1E7D006B8FD5 /* AppDelegate.m in Sources */,
+				B7737ACB1F14E39C005AAFBD /* README.md in Sources */,
+				B782CF121F15E46C00CD5E4C /* ARKitEngine.m in Sources */,
 				B793072B1F0A1E7D006B8FD5 /* main.m in Sources */,
+				B782CEFF1F15DDAA00CD5E4C /* DetailView.m in Sources */,
+				B7B9E35E1F13645F0075861B /* AnimatedCircleView.m in Sources */,
+				B782CF111F15E46C00CD5E4C /* ARKitConfig.m in Sources */,
+				B782CF151F15E46C00CD5E4C /* RadarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +502,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -290,7 +512,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -329,7 +555,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -337,7 +565,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -366,9 +598,11 @@
 			baseConfigurationReference = 2B6D5AB1E24E4F103E4E1534 /* Pods-FirebasePOC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FirebasePOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Opentrends.FirebasePOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.opentrends.FirebasePOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -379,9 +613,11 @@
 			baseConfigurationReference = 0FF045B4000DA13A555F0F37 /* Pods-FirebasePOC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FirebasePOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Opentrends.FirebasePOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.opentrends.FirebasePOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

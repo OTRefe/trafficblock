@@ -1,67 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Traffic View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TrafficViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-21-knZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="602"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="1291"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fwP-Tp-vKu"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-nU-Qpy">
-                                <rect key="frame" x="10" y="627" width="355" height="31"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-nU-Qpy">
+                                <rect key="frame" x="0.0" y="1311" width="1024" height="51"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="SRY-YV-YZx"/>
+                                    <constraint firstAttribute="height" constant="30" id="kCu-Ih-q1j">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                    </constraint>
                                 </constraints>
                                 <segments>
                                     <segment title="Slow Moving"/>
-                                    <segment title="Block"/>
                                     <segment title="Free Moving"/>
-                                    <segment title="Traffic Status"/>
+                                    <segment title="Block"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="segmentedControlClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="mi2-DD-TpG"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaC-eT-OXN">
+                                <rect key="frame" x="934" y="50" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Y6D-L9-HKM">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="44" id="ji1-YW-aCE">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
+                                </constraints>
+                                <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="btnRefreshClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8sX-9q-PmM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdL-zL-Kx2">
+                                <rect key="frame" x="934" y="110" width="60" height="60"/>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <segue destination="Dsw-bV-bBm" kind="modal" identifier="ARViewSegue" id="TlP-iV-MyE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fro-3B-Z53">
+                                <rect key="frame" x="934" y="170" width="60" height="60"/>
+                                <state key="normal" image="Hunt"/>
+                                <connections>
+                                    <action selector="btnStreetViewClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mmu-9B-G4Z"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" constant="10" id="1kl-v9-cg5"/>
-                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" constant="5" id="GNt-dk-WXh"/>
-                            <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="GwA-dU-KDf"/>
-                            <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LQm-hs-I0l"/>
-                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="Oyz-CB-mvB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" constant="10" id="mMc-PA-BEd"/>
-                            <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rkW-Od-qWU"/>
+                            <constraint firstAttribute="trailing" secondItem="cPu-21-knZ" secondAttribute="trailing" id="2eJ-zd-pub"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="top" secondItem="YaC-eT-OXN" secondAttribute="bottom" id="4jU-xn-oVo"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ia-nU-Qpy" secondAttribute="bottom" constant="5" id="E00-ql-l6q"/>
+                            <constraint firstItem="cPu-21-knZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KPf-I9-ktO"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="top" secondItem="cPu-21-knZ" secondAttribute="bottom" id="YvC-lT-hA3"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="top" secondItem="gdL-zL-Kx2" secondAttribute="bottom" id="ZCJ-nu-tf8"/>
+                            <constraint firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" constant="20" id="aaj-AI-nYc">
+                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="YaC-eT-OXN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="fzp-7n-wf4">
+                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="trailing" secondItem="YaC-eT-OXN" secondAttribute="trailing" id="hRl-Zv-aTb"/>
+                            <constraint firstAttribute="trailing" secondItem="5Ia-nU-Qpy" secondAttribute="trailing" id="ha9-bE-aFt"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="width" secondItem="YaC-eT-OXN" secondAttribute="width" id="jZ2-MI-lEX"/>
+                            <constraint firstItem="5Ia-nU-Qpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kJZ-uf-nYV"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="width" secondItem="gdL-zL-Kx2" secondAttribute="width" id="lCR-W7-TQL"/>
+                            <constraint firstItem="gdL-zL-Kx2" firstAttribute="height" secondItem="YaC-eT-OXN" secondAttribute="height" id="mff-wo-c5y"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="height" secondItem="gdL-zL-Kx2" secondAttribute="height" id="nJJ-pW-tWr"/>
+                            <constraint firstItem="fro-3B-Z53" firstAttribute="trailing" secondItem="gdL-zL-Kx2" secondAttribute="trailing" id="tSW-60-Czx"/>
+                            <constraint firstItem="cPu-21-knZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tVD-BV-Mc5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnRefresh" destination="YaC-eT-OXN" id="1kF-OK-d8L"/>
+                        <outlet property="btnStreetView" destination="fro-3B-Z53" id="GNU-JT-cpI"/>
                         <outlet property="mapView" destination="cPu-21-knZ" id="r5r-k3-RCh"/>
                         <outlet property="segmentedControl" destination="5Ia-nU-Qpy" id="MjH-Od-NEs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="125"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="125.54347826086958"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="U4B-kH-TFb">
+            <objects>
+                <viewController id="Dsw-bV-bBm" customClass="ARViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TnF-Dl-ZXM"/>
+                        <viewControllerLayoutGuide type="bottom" id="mwb-Mo-dTA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZTf-pa-pNr">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-WR-A8G">
+                                <rect key="frame" x="960" y="40" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="doV-Xy-0Jj"/>
+                                    <constraint firstAttribute="width" constant="44" id="ucF-qr-194"/>
+                                </constraints>
+                                <state key="normal" image="close view"/>
+                                <connections>
+                                    <action selector="btnCloseClicked:" destination="Dsw-bV-bBm" eventType="touchUpInside" id="trG-ER-xcT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="M5y-WR-A8G" secondAttribute="trailing" constant="20" id="9HX-G3-9fA"/>
+                            <constraint firstItem="M5y-WR-A8G" firstAttribute="top" secondItem="TnF-Dl-ZXM" secondAttribute="bottom" constant="20" id="KRn-fX-CvH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZF-wn-Qz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Hunt" width="26" height="26"/>
+        <image name="camera" width="26" height="26"/>
+        <image name="close view" width="50" height="50"/>
+        <image name="refresh" width="26" height="26"/>
+    </resources>
 </document>
